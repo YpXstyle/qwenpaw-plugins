@@ -4,13 +4,13 @@
 
 在直接交互的 Console 对话中收集结构化答案，然后在同一 Agent 轮次继续执行。
 
-**版本：**0.1.5 本地候选 · **作者：**Yance · **许可证：**Apache-2.0
+**版本：**0.1.5 · **作者：**Yance · **许可证：**Apache-2.0
 
 插件 ID：`yance-ask-user-question`；工具名与审批来源：`yance_ask_user_question`。
 这些标识与 0.1.2 保持一致，工具**默认禁用**。
-本插件由个人独立维护，尚未通过 AgentScope 插件市场审核或发布。
-[源码仓库](https://github.com/YpXstyle/qwenpaw-plugins)已有 0.1.4 源码 tag，
-0.1.5 仍在本地等待用户验收；目前没有 GitHub Release/下载资产或市场上架。
+本插件由个人独立维护，[AgentScope 插件市场已发布 0.1.5](https://platform.agentscope.io/plugins/yance-ask-user-question)。
+维护者 **Yance** 重启后已确认桌面验收，[源码仓库](https://github.com/YpXstyle/qwenpaw-plugins)
+包含 0.1.5 源码 tag。目前未创建 GitHub Release 资产。
 
 ## 功能
 
@@ -31,14 +31,20 @@
 按实际锚点和 `visualViewport` 测量可用空间，用于处理非全屏、较矮桌面窗口中的标题/操作遮挡，
 布局变化时保留草稿。框架模型指令仍要求英文 `(Recommended)` 和推荐项首位，保持原样。
 中文标记只是显示容错，不改变 schema；不解析其他语言标记，七语支持指插件徽标和界面。
-每个候选须有绑定自身源码/ZIP 的证据，0.1.5 待用户验收，已验收 0.1.4 ZIP 保持原字节。
+每个候选须有绑定自身源码/ZIP 的证据；已验收的 0.1.5 及更早 ZIP 均保持原字节。
+所示桌面状态见[效果截图](#screenshots)。
 
 ## 安装与升级
 
-候选 ZIP 已含前端构建产物，使用者无需 npm、Node.js 或源码构建。
-以下均为示例本地路径，不是已发布的下载地址。
+优先通过 [AgentScope 插件市场](https://platform.agentscope.io/plugins/yance-ask-user-question)安装，或在 QwenPaw 运行时使用
+已发布的 0.1.5 ZIP 地址：
 
-QwenPaw 运行时，通过插件管理界面上传 ZIP，或执行：
+```bash
+qwenpaw plugin install "https://agentscope-platform-sg-bucket.oss-accelerate.aliyuncs.com/plugin-platform/yance-ask-user-question/0.1.5/yance-ask-user-question-0.1.5.zip"
+```
+
+ZIP 已含前端构建产物，使用者无需 npm、Node.js 或源码构建。
+已下载的本地 ZIP 也可通过插件管理上传，或使用示例本地路径：
 
 ```bash
 qwenpaw plugin install "/path/to/yance-ask-user-question-0.1.5.zip"
@@ -74,8 +80,8 @@ qwenpaw plugin install "/path/to/yance-ask-user-question-0.1.5.zip"
 
 ### 相同 ID 从 0.1.4 升级到 0.1.5
 
-已经安装 `yance-ask-user-question` 0.1.4 时，获得测试授权后使用 `--force`
-替换为相同 ID 的 0.1.5 候选：
+已经安装 `yance-ask-user-question` 0.1.4 时，使用 `--force`
+替换为相同 ID 的 0.1.5：
 
 ```bash
 qwenpaw plugin install "/path/to/yance-ask-user-question-0.1.5.zip" --force
@@ -149,6 +155,55 @@ Agent 获得答案后继续当前轮次，你也可以拒绝回答。
 判断前从“参数”核对实际载荷，模型给出不同内容不代表夹具已执行。
 不添加 `recommended` 属性，也不从选项位置推断推荐。
 
+<a id="screenshots"></a>
+
+## 效果截图
+
+以下六张为维护者 **Yance** 提供的 0.1.5 桌面原图，保留原字节，未裁剪或改图。
+维护者重启后确认卡片详情为 0.1.5，推荐高亮、图标及排序正常；单张图片只证明所示界面状态，
+不代替整条问答/结果链路的证据。验收范围见[版本验证记录](https://github.com/YpXstyle/qwenpaw-plugins/blob/main/docs/validation/yance-ask-user-question-0.1.5.md)。
+
+### 深色：普通单选
+
+![深色主题：选中一个普通选项](https://raw.githubusercontent.com/YpXstyle/qwenpaw-plugins/main/plugins/tool/yance-ask-user-question/docs/images/0.1.5/dark-single-choice-selected.png)
+
+橙色表示选中状态。图中没有推荐徽标，不能仅凭选中色判断推荐。
+
+### 深色：多选全部选中
+
+![深色主题：四个多选项均已选中](https://raw.githubusercontent.com/YpXstyle/qwenpaw-plugins/main/plugins/tool/yance-ask-user-question/docs/images/0.1.5/dark-multiple-choice-all-selected.png)
+
+四个已有选项均被选中，展示多选状态，不表示存在独立的“一键全选”功能，也不表示推荐。
+
+### 深色：推荐项尚未选中
+
+![深色主题：未选推荐项带星标、徽标和淡绿样式](https://raw.githubusercontent.com/YpXstyle/qwenpaw-plugins/main/plugins/tool/yance-ask-user-question/docs/images/0.1.5/dark-recommended-unselected.png)
+
+显式推荐项带星标、徽标和淡绿样式；尚未选择，“下一题”禁用。
+“参数”处于折叠状态，单凭此图不能独立证明原始选项顺序。
+
+### 浅色：长问题
+
+![浅色主题：长标题换行，选项与导航可见](https://raw.githubusercontent.com/YpXstyle/qwenpaw-plugins/main/plugins/tool/yance-ask-user-question/docs/images/0.1.5/light-long-question-selected.png)
+
+长标题换行，截图窗口中选项与导航仍可见。橙色项是普通选中状态，没有推荐徽标；
+此图不证明所有窗口尺寸或缩放比例均已验收。
+
+### 浅色：单题待提交
+
+![浅色主题：单题已选择，提交答案按钮可用](https://raw.githubusercontent.com/YpXstyle/qwenpaw-plugins/main/plugins/tool/yance-ask-user-question/docs/images/0.1.5/light-single-question-submit.png)
+
+选择后“提交答案”可用，展示提交前状态，不证明已完成提交或返回 metadata。
+
+### 浅色：推荐项尚未选中
+
+![浅色主题：未选推荐项带星标，提交答案仍禁用](https://raw.githubusercontent.com/YpXstyle/qwenpaw-plugins/main/plugins/tool/yance-ask-user-question/docs/images/0.1.5/light-recommended-unselected.png)
+
+星标、徽标及绿色样式表示推荐。“提交答案”仍禁用，因为尚未作答；推荐不会自动预选。
+
+图片归属本插件源码文档。解压后查看 README 的绝对托管图片需要网络连接。
+本次源码文档更新不重新打包已验收的 0.1.5 ZIP，不改其包内 README 或发行 tag。
+
 ## 等待时在哪里回答
 
 问答卡的“提交答案”是结构化答案入口，卡内“其他/自由输入”仍然可用。
@@ -206,8 +261,8 @@ Chat 的 `yance_ask_user_question_ui: "1"` 是界面就绪提示，
 ## 支持范围与兼容性
 
 支持范围为**直接交互的 Console Chat 主 Agent**。
-桌面 Chat 使用相同扩展接口，每个候选均须在实际目标桌面版本中人工验收，
-旧版或浏览器结果不能代替该候选的桌面验收。**0.1.5 待用户验收。**
+桌面 Chat 使用相同扩展接口。维护者 **Yance** 重启后已在目标桌面版本验收 0.1.5，
+见[验证记录](https://github.com/YpXstyle/qwenpaw-plugins/blob/main/docs/validation/yance-ask-user-question-0.1.5.md)。新候选仍须独立人工验收，旧版或浏览器结果不能代替。
 
 不支持 IM、子 Agent、跨配置委托、远程 Agent、ACP、TUI、cron、heartbeat、
 mail monitor、其他无界面/无人值守入口、Inbox 和重启持久恢复。
@@ -224,7 +279,7 @@ mail monitor、其他无界面/无人值守入口、Inbox 和重启持久恢复�
 | 清单与实际版本检查     | 声明 `min: 2.2.2`；规范推导上界 `<2.3.0`，但当前开发基线暂时只强制检查最低版本，不强制上界         |
 | 框架依赖               | 宿主提供的 AgentScope `2.0.10`，不额外安装另一份框架                                               |
 | 其他宿主版本           | 尚未逐版验证，加载范围不是全范围兼容保证                                                           |
-| Web 与桌面人工验收     | 按具体候选 ZIP 分别记录，0.1.5 待用户确认                                                          |
+| Web 与桌面人工验收     | 0.1.5 已由 Yance 完成桌面验收；Web/桌面及精确产物分别记录                                          |
 
 开发基线为未经修改的上游 QwenPaw `5c56644a`（`2.2.2`），
 使用宿主钉住的 AgentScope `2.0.10`。清单最低版本 `2.2.2` 是准入条件，
@@ -283,8 +338,9 @@ python scripts/package_plugin.py --plugin yance-ask-user-question --output-dir d
 不分发前端源码、node_modules、用户状态或第二套 AgentScope 运行时。
 
 自动化结果仅覆盖其记录的源码和产物哈希，不证明上游全量 CI、云模型行为、桌面验收或市场批准。
-每个候选均须完成自身验证和人工验收，旧版本结果单独保留；0.1.5 用户验收通过后才能提交、上传或发布。
-源码仓库的[市场材料草稿](../../../docs/marketplace-listing_zh.md)记录实际 QwenPaw 字段及发布状态，
+每个候选均须完成自身验证和人工验收，旧版本结果单独保留。
+所链接验证记录对应已验收的 0.1.5 产物；当前源码文档可继续更新，不改写已冻结 ZIP。
+源码仓库的[市场发布材料](../../../docs/marketplace-listing_zh.md)记录实际 QwenPaw 字段及发布状态，
 源码上传不等于市场审核通过。
 
 ## 许可证与维护

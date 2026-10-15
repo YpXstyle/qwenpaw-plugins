@@ -17,7 +17,7 @@ CI 可以验证并保留产物，不自动发布。
 依照[单独迁移步骤](docs/naming_zh.md)。两者均不修改官方澄清工具。
 每个候选均须有绑定自身源码和 ZIP 哈希的验证及人工验收。
 维护者 **Yance** 重启后已确认 0.1.5 桌面验收，版本源码纳入本仓库；见
-[验证记录](docs/validation/yance-ask-user-question-0.1.5.md)和[原图图库](docs/yance-ask-user-question-gallery_zh.md)。
+[验证记录](docs/validation/yance-ask-user-question-0.1.5.md)和[插件效果截图](plugins/tool/yance-ask-user-question/README_zh.md#screenshots)。
 旧版本结果不能自动转移到新产物。
 
 0.1.5 包含两个独立显示修复：兼容显式英文/中文推荐后缀，以及将带标记选项稳定置前展示。
@@ -66,8 +66,10 @@ Agent 身份不符、工具不存在或介绍已变化时应拒写，读取失�
 将精确包及实际结果记录到被忽略的证据报告，不在源文档写尚未完成的通过数字。
 本候选须维护者人工验收通过后，才能提交或发布。
 
-已验收 0.1.5 运行 ZIP 保持原字节，包内 README 的候选字样属于打包时点文字，
-后续维护者确认以外层验证记录为准。原始自动化报告保留，人工验收另行记录；
+已验收 0.1.5 运行 ZIP 和 tag 保持不变，包内 README 的候选字样属于打包时点文字，
+后续维护者确认以外层验证记录为准。当前源码 README 可继续改进文档及增加托管截图链接，
+无需改写已验收归档。复现或核对已验收发行时，使用不可变版本 tag 与所记录 ZIP，
+不以之后源码 README 的哈希代替。如需重新打包，使用 `--output-dir` 选择独立目录，防止覆盖冻结 ZIP。原始自动化报告保留，人工验收另行记录；
 示例模板仍为 `pending`，不是已经完成的维护者验收记录。
 
 将[验收示例](docs/manual-acceptance.example.json)复制到本地证据目录，如实填写：
@@ -103,11 +105,12 @@ python scripts/release_preflight.py --plugin yance-ask-user-question --validatio
 先确认仓库、账号和真实发行地址，再写下载链接。
 本地流程不执行这些发布动作，目前也不设计自动上传工作流。
 
-[源码仓库](https://github.com/YpXstyle/qwenpaw-plugins)及 0.1.4 源码 tag 已上传，
-尚无 GitHub Release 或插件市场发布；0.1.5 已通过维护者验收，版本源码纳入本仓库，
-不代表已完成市场发布。
-按[市场材料草稿](docs/marketplace-listing_zh.md)准备实际 QwenPaw 字段，不套用其他平台规则，
-不编造 ZIP 下载地址，也不为准备材料改写已验收旧 ZIP。
+[源码仓库](https://github.com/YpXstyle/qwenpaw-plugins)及 0.1.5 源码 tag 已上传，
+[市场 0.1.5 已发布](https://platform.agentscope.io/plugins/yance-ask-user-question)并提供真实安装包，尚未创建 GitHub Release 资产。
+0.1.5 已通过维护者桌面验收。市场 ZIP 与已验收本地 ZIP 的归档字节不同，
+八个成员路径和文件内容相同，两份哈希记录于[市场发布材料](docs/marketplace-listing_zh.md)。
+已发布状态不代表已独立核验安全扫描结果。使用实际 QwenPaw 字段，不套用其他平台规则，
+也不为准备材料改写已验收归档。
 
 本仓 tag 约定为 `<插件ID>-v<版本>`，例如
 `yance-ask-user-question-v0.1.5`。这是集合仓库的管理约定，不是 QwenPaw 官方要求。

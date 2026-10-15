@@ -93,6 +93,6 @@ command to exit before restarting.
 This local collection is independent of the QwenPaw feature PR. Naming
 and migration here do not alter its source, branch or published PR.
 The public [source repository](https://github.com/YpXstyle/qwenpaw-plugins)
-contains the 0.1.4 source tag, and 0.1.5 version source is maintained in
-this repository. GitHub Release and marketplace publication are separate
-and have not been completed.
+contains the 0.1.5 source tag. [Marketplace version 0.1.5 is published](https://platform.agentscope.io/plugins/yance-ask-user-question);
+no GitHub Release asset has been created. Source tags, marketplace
+packages and GitHub Release assets are separate records.

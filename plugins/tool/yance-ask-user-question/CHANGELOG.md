@@ -2,10 +2,14 @@
 
 [English README](README.md) · [中文说明](README_zh.md)
 
-Versions below describe local development artifacts; they are not public
-release announcements. / 以下记录本地开发产物，不代表已公开发布。
+Each entry identifies its release state. Earlier local candidates are not
+marketplace releases. / 各条目分别标明发行状态，早期本地候选不代表市场发行。
 
-## 0.1.5 — Local candidate / 本地候选
+## 0.1.5 — 2026-10-15 — Marketplace release / 插件市场发布
+
+[AgentScope marketplace](https://platform.agentscope.io/plugins/yance-ask-user-question) ·
+[Source tag](https://github.com/YpXstyle/qwenpaw-plugins/tree/yance-ask-user-question-v0.1.5) ·
+[Validation and acceptance](../../../docs/validation/yance-ask-user-question-0.1.5.md)
 
 - Fix explicit recommendation-marker display: accept English `Recommended`
   case-insensitively and Chinese `推荐` in paired ASCII/full-width
@@ -16,17 +20,18 @@ release announcements. / 以下记录本地开发产物，不代表已公开发�
   and schema; do not preselect or infer markers from description/position.
 - Keep the official AskUser model instruction unchanged. Seven-language
   badges/UI do not expand parsing to other marker languages.
-- Prepare bilingual QwenPaw marketplace listing materials with the real
-  source URL. Version 0.1.5 awaits user acceptance and is not uploaded or
-  published; the accepted 0.1.4 ZIP and evidence remain unchanged.
+- Publish 0.1.5 to the AgentScope plugin marketplace after maintainer
+  acceptance. Preserve the accepted archive, source tag and earlier
+  version evidence. Subsequent README/gallery revisions change source
+  documentation without replacing the published plugin files.
 
 - 修复显式推荐标记显示：成对半角/全角括号内的英文 `Recommended` 忽略大小写，中文接受 `推荐`；
   仅显示匹配忽略尾空白，不删除零宽字符。
 - 独立修复带标记选项稳定置前展示，两组内部保持原顺序；原选项顺序/标签、选择、答案 metadata
   和 schema 不变，不自动预选，不从说明或位置推断标记。
 - 官方 AskUser 模型指令保持不变，七语徽标/界面不等于解析其他语言标记。
-- 准备使用真实源码地址的双语 QwenPaw 市场材料。0.1.5 待用户验收，未上传或发布；
-  已验收 0.1.4 ZIP 和证据保持不变。
+- 维护者人工验收后，0.1.5 已发布至 AgentScope 插件市场。已验收包、源码标签及早期版本证据保持不变；
+  后续 README/图库修订仅调整源码文档，不替换已上架插件文件。
 
 ## 0.1.4 — Source tagged / 源码已打 tag
 

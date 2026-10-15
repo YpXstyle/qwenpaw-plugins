@@ -23,7 +23,7 @@ official clarification tool. Every candidate must have validation and
 manual acceptance bound to its own source and archive hashes. Maintainer **Yance**
 has confirmed 0.1.5 Desktop acceptance after restarting. Its version
 source is maintained in this repository. See the [validation record](docs/validation/yance-ask-user-question-0.1.5.md)
-and [original screenshot gallery](docs/yance-ask-user-question-gallery.md).
+and [plugin screenshots](plugins/tool/yance-ask-user-question/README.md#screenshots).
 Earlier-version results do not transfer to a new artifact.
 
 The 0.1.5 changes are separate display fixes: recognize explicit
@@ -93,9 +93,14 @@ reports, rather than adding unfinished pass counts to source
 documentation. User acceptance is required before commit or publication
 of this candidate.
 
-The accepted 0.1.5 runtime ZIP is kept byte-for-byte unchanged. Its
-packaged README still uses candidate wording from packing time; the
+The accepted 0.1.5 runtime ZIP and tag are kept byte-for-byte unchanged.
+Its packaged README still uses candidate wording from packing time; the
 external validation record documents the subsequent maintainer confirmation.
+Current source READMEs may receive documentation-only improvements and
+hosted screenshot links without rewriting that archive. To reproduce or
+verify the accepted release, use its immutable version tag and recorded ZIP,
+not a later source README's hash. If repackaging is needed, select a
+separate directory with `--output-dir` so the frozen ZIP is not overwritten.
 Retain the original automation reports and record human acceptance
 separately. The example template remains `pending` and is not a completed
 maintainer acceptance record.
@@ -140,13 +145,14 @@ before documenting download links. No such publication is performed by
 this local process, and no automatic upload workflow is currently designed.
 
 The [source repository](https://github.com/YpXstyle/qwenpaw-plugins) and
-0.1.4 source tag are already uploaded. There is no GitHub Release or
-marketplace publication. Version 0.1.5 has maintainer acceptance and its
-source is maintained in this repository. This does not establish
-marketplace publication. Prepare the actual QwenPaw fields using
-[the listing draft](docs/marketplace-listing.md), not another platform's
-submission rules. Do not manufacture ZIP download links or rewrite an
-accepted older archive to prepare a listing.
+0.1.5 source tag are uploaded. [Marketplace version 0.1.5 is published](https://platform.agentscope.io/plugins/yance-ask-user-question)
+and has a real downloadable package; no GitHub Release asset has been created. Version 0.1.5 has maintainer Desktop acceptance. The public
+marketplace ZIP has different archive bytes but identical eight member
+paths/content to the accepted local ZIP; both hashes are recorded in
+[the listing materials](docs/marketplace-listing.md). This published status
+is not a separately verified security-scan result. Use QwenPaw's actual
+fields, not another platform's rules, and never rewrite an accepted archive
+to prepare a listing.
 
 Our tag convention is `<plugin-id>-v<version>`, for example
 `yance-ask-user-question-v0.1.5`. This is a collection convention,

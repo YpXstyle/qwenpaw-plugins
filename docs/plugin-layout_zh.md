@@ -25,6 +25,12 @@ ID 和版本为必需字段，入口路径相对于该插件目录，前端入�
 上游 OSS 发布工作流是上游维护者的部署流程，不要求社区插件采用相同托管方式或凭据。
 当前命名及与 Data Console 澄清契约的区别见[命名与迁移](naming_zh.md)。
 
+根双语 README 保持插件目录定位，完整示例及截图放在各插件中英文 README，
+两种语言均提供 `#screenshots` 入口。原图归属
+`plugins/<类别>/<插件ID>/docs/images/<版本>/`，根通用指南链接这些章节。
+运行包不包含图片时，README 可使用绝对托管原图 URL，并说明查看图片需要联网。
+当前源码的文档更新不替换已验收、已冻结 ZIP 中的 README。
+
 ## 交付边界
 
 Ask User Question by Yance ZIP 包含后端运行文件、单个前端构建产物、清单、许可证和中英文文档。
@@ -49,5 +55,5 @@ Ask User Question by Yance ZIP 包含后端运行文件、单个前端构建产�
 不发送全 tools PUT，不重新加载 Agent，也不自动迁移全部 Agent。
 
 市场材料准备独立于源码上传及运行包打包。
-实际 QwenPaw 提交字段、当前状态与可选演示材料见[市场材料草稿](marketplace-listing_zh.md)。
+实际 QwenPaw 提交字段、当前状态与可选演示材料见[市场发布材料](marketplace-listing_zh.md)。
 源码 tag 不等于可下载的插件 ZIP，也不等于市场审核通过。

@@ -17,6 +17,12 @@
 不在插件变更中混入无关宿主修复或其他贡献的改动。
 用户状态、凭据、node_modules、临时环境及生成的发行产物不进入源码提交。
 
+根中英文 README 是集合目录。完整截图和示例直接放在所属插件的双语 README，
+两种语言均保留稳定的 `#screenshots` 入口。原图放在该插件的
+`docs/images/<版本>/`，不放集合根目录。运行 ZIP 不含图片时，README 使用真实托管原图地址，
+并说明查看图片需要联网。发行后源码文档可以继续更新，但不能只为更新图片改写已验收 ZIP 或 tag。
+根通用指南链接对应插件，不重复完整图库。
+
 ## 文档与元数据
 
 每个插件维护英文 `README.md`、中文 `README_zh.md`、`CHANGELOG.md` 和 `LICENSE`。
@@ -70,4 +76,4 @@ python scripts/validate_plugin.py --plugin yance-ask-user-question --host-source
 人工记录与本地预检见 [RELEASING_zh.md](RELEASING_zh.md)。
 测试及预检通过不等于获得创建远端、推送、打 tag、上传发行包或提交市场的授权。
 这些动作仅在用户明确要求并授权后进行。
-市场字段和文案另见[材料草稿](docs/marketplace-listing_zh.md)，源码上传或版本 tag 不等于市场发布。
+市场字段和文案另见[发布材料](docs/marketplace-listing_zh.md)，源码上传或版本 tag 不等于市场发布。

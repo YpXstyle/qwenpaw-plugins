@@ -75,5 +75,6 @@ Data Console 已有服务于其自身澄清流程的内置 `ask_user_question`�
 源码启动的桌面版应先关闭窗口，等启动命令退出后再启动。
 
 本地集合仓库独立于 QwenPaw 功能 PR，此处命名和迁移不修改其源码、分支或已发表 PR。
-[公开源码仓库](https://github.com/YpXstyle/qwenpaw-plugins)已有 0.1.4 源码 tag；
-0.1.5 版本源码纳入本仓库；GitHub Release 和插件市场尚未发布，源码上传或 tag 不等于市场发布。
+[公开源码仓库](https://github.com/YpXstyle/qwenpaw-plugins)已有 0.1.5 源码 tag；
+[市场 0.1.5 已发布](https://platform.agentscope.io/plugins/yance-ask-user-question)，尚未创建 GitHub Release 资产。
+源码 tag、市场安装包与 GitHub Release 资产分别记录。

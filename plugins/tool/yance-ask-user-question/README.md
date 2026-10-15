@@ -5,15 +5,15 @@ English | [简体中文](README_zh.md) | [Changelog](CHANGELOG.md)
 Collect structured answers during direct Console conversations, then resume
 the same Agent turn.
 
-**Version:** 0.1.5 local candidate · **Author:** Yance · **License:** Apache-2.0
+**Version:** 0.1.5 · **Author:** Yance · **License:** Apache-2.0
 
 Plugin ID: `yance-ask-user-question`. Tool and approval source:
 `yance_ask_user_question`. These identifiers are unchanged from 0.1.2;
 the tool is **disabled by default**. This independently maintained plugin
-has not been published to or approved by the AgentScope marketplace.
-The [source repository](https://github.com/YpXstyle/qwenpaw-plugins) has
-the 0.1.4 source tag; 0.1.5 remains local and awaits user acceptance.
-There is no GitHub Release/download asset or marketplace listing yet.
+is [published as 0.1.5 in the AgentScope marketplace](https://platform.agentscope.io/plugins/yance-ask-user-question).
+Maintainer **Yance** confirmed Desktop acceptance after restarting. The
+[source repository](https://github.com/YpXstyle/qwenpaw-plugins) includes
+the 0.1.5 source tag. No GitHub Release asset has been created.
 
 ## Features
 
@@ -25,7 +25,7 @@ There is no GitHub Release/download asset or marketplace listing yet.
   sensitivity and Chinese `推荐` markers in paired `()` or `（）`.
   Trailing whitespace is ignored for display matching only; zero-width
   characters are not stripped. Every marked option keeps a star when selected
-  and have a soft green outline/background when unselected.
+  and has a soft green outline/background when unselected.
 - Separately display marked options first, retaining source order within
   the marked and unmarked groups. The original option array/labels,
   selection state and answer payload are unchanged. Nothing is preselected;
@@ -50,16 +50,22 @@ The framework's model instruction still requests English `(Recommended)`
 and first position; it is unchanged. Chinese markers are display
 compatibility, not a schema change. Other marker languages are not parsed;
 seven-language support refers to the plugin's badges and interface.
-Each candidate requires evidence bound to its own source/ZIP. Version
-0.1.5 is awaiting user acceptance; keep the accepted 0.1.4 ZIP unchanged.
+Each candidate requires evidence bound to its own source/ZIP. The accepted
+0.1.5 artifact and earlier accepted ZIPs remain byte-for-byte unchanged.
+See [Screenshots](#screenshots) for the captured Desktop states.
 
 ## Install and upgrade
 
-The candidate ZIP includes its built frontend. End users do not need npm,
-Node.js or a source build. The following paths are local examples, not
-published download URLs.
+Install from the [AgentScope marketplace](https://platform.agentscope.io/plugins/yance-ask-user-question) or use the published
+0.1.5 ZIP URL with QwenPaw running:
 
-With QwenPaw running, upload the ZIP through plugin management or run:
+```bash
+qwenpaw plugin install "https://agentscope-platform-sg-bucket.oss-accelerate.aliyuncs.com/plugin-platform/yance-ask-user-question/0.1.5/yance-ask-user-question-0.1.5.zip"
+```
+
+The ZIP includes its built frontend. End users do not need npm, Node.js
+or a source build. For a downloaded local ZIP, upload it through plugin
+management or use a local path, for example:
 
 ```bash
 qwenpaw plugin install "/path/to/yance-ask-user-question-0.1.5.zip"
@@ -104,7 +110,7 @@ and its evidence; a new ID/version/hash requires its own acceptance.
 ### Upgrade the same ID from 0.1.4 to 0.1.5
 
 If `yance-ask-user-question` 0.1.4 is installed, use `--force` to replace it
-with the 0.1.5 candidate under the same ID, when authorized for acceptance:
+with 0.1.5 under the same ID:
 
 ```bash
 qwenpaw plugin install "/path/to/yance-ask-user-question-0.1.5.zip" --force
@@ -200,6 +206,65 @@ Inspect Parameters before judging results: a different model payload is
 not proof of this fixture. Do not add a `recommended` property or infer
 recommendation from option position.
 
+## Screenshots
+
+Maintainer **Yance** provided these six original Desktop screenshots for
+0.1.5. They are preserved without cropping or image changes. The maintainer
+confirmed the restarted card's Details showed 0.1.5 and that recommendation
+highlighting, icons and ordering worked; individual screenshots below prove
+only their visible state, not the whole answer/result flow. See the
+[version validation record](https://github.com/YpXstyle/qwenpaw-plugins/blob/main/docs/validation/yance-ask-user-question-0.1.5.md) for the acceptance boundary.
+
+### Ordinary single selection, dark theme
+
+![Dark theme: one ordinary option selected](https://raw.githubusercontent.com/YpXstyle/qwenpaw-plugins/main/plugins/tool/yance-ask-user-question/docs/images/0.1.5/dark-single-choice-selected.png)
+
+Orange indicates the selected option. No recommendation badge is present;
+selection color alone does not mean recommended.
+
+### Multiple options selected, dark theme
+
+![Dark theme: all four multiple-choice options selected](https://raw.githubusercontent.com/YpXstyle/qwenpaw-plugins/main/plugins/tool/yance-ask-user-question/docs/images/0.1.5/dark-multiple-choice-all-selected.png)
+
+All four listed options are selected. This shows a multiple-selection
+state, not a separate one-click Select all feature or a recommendation.
+
+### Recommendation before selection, dark theme
+
+![Dark theme: an unselected recommended option with a star and green treatment](https://raw.githubusercontent.com/YpXstyle/qwenpaw-plugins/main/plugins/tool/yance-ask-user-question/docs/images/0.1.5/dark-recommended-unselected.png)
+
+The explicit recommendation has a star, badge and soft green treatment.
+Nothing is selected and Next is disabled. The collapsed Parameters do not
+independently establish the original source order.
+
+### Long question, light theme
+
+![Light theme: a wrapping question with options and navigation visible](https://raw.githubusercontent.com/YpXstyle/qwenpaw-plugins/main/plugins/tool/yance-ask-user-question/docs/images/0.1.5/light-long-question-selected.png)
+
+The long heading wraps while options and navigation remain visible at the
+captured window size. The orange option is selected without a recommendation
+badge; this image does not establish every window size or zoom level.
+
+### One question ready to submit, light theme
+
+![Light theme: an answered single question with Submit answer enabled](https://raw.githubusercontent.com/YpXstyle/qwenpaw-plugins/main/plugins/tool/yance-ask-user-question/docs/images/0.1.5/light-single-question-submit.png)
+
+A selection enables Submit answer. This is the state before submission,
+not proof of a completed request or returned metadata.
+
+### Recommendation before selection, light theme
+
+![Light theme: an unselected recommended option with Submit answer disabled](https://raw.githubusercontent.com/YpXstyle/qwenpaw-plugins/main/plugins/tool/yance-ask-user-question/docs/images/0.1.5/light-recommended-unselected.png)
+
+The star, badge and green treatment mark the recommendation. Submit answer
+is disabled because no choice has been made; the recommendation is not
+preselected.
+
+These images belong to this plugin's source documentation. Their absolute
+hosted URLs require network access when viewing an unpacked README. This
+source documentation update does not repack the accepted 0.1.5 ZIP or
+rewrite its README or release tag.
+
 ## While waiting: where to answer
 
 The question card's Submit action is the structured answer entry point.
@@ -282,10 +347,11 @@ is not promised.
 ## Support and compatibility
 
 Supported scope is **direct interactive Console Chat with its main Agent**.
-Desktop Chat shares the extension interfaces. Each candidate requires
-manual acceptance on the actual target desktop build; earlier browser or
-version results do not establish that acceptance. **Version 0.1.5 awaits
-user acceptance.**
+Desktop Chat shares the extension interfaces. Maintainer **Yance** accepted
+0.1.5 on the target Desktop build after restarting; see the
+[validation record](https://github.com/YpXstyle/qwenpaw-plugins/blob/main/docs/validation/yance-ask-user-question-0.1.5.md). Each new candidate requires its own
+manual acceptance. Earlier browser/version results do not establish that
+acceptance.
 
 IM, subagents, cross-configuration delegation, remote agents, ACP, TUI,
 cron, heartbeat, mail monitoring, other headless/unattended entry points,
@@ -306,7 +372,7 @@ answers returns `ERROR`.
 | Manifest and actual version checks    | Declared `min: 2.2.2`; the documented derived upper bound is `<2.3.0`, but this baseline temporarily enforces only the minimum, not the upper bound |
 | Framework dependency                  | Host-provided AgentScope `2.0.10`; no second framework installation                                                                                 |
 | Other host versions                   | Not individually verified; admission does not prove compatibility across the range                                                                  |
-| Web and Desktop manual acceptance     | Record separately per exact candidate ZIP; 0.1.5 is awaiting user confirmation                                                                      |
+| Web and Desktop manual acceptance     | 0.1.5 Desktop accepted by Yance; record Web/Desktop and exact artifacts separately                                                                  |
 
 The development baseline is unmodified upstream QwenPaw `5c56644a`
 (`2.2.2`) with its pinned AgentScope `2.0.10`. Manifest minimum `2.2.2`
@@ -379,9 +445,10 @@ node_modules, user state or second AgentScope runtime is shipped.
 Automated results cover only their recorded source/archive hashes. They
 do not establish full upstream CI, cloud-model behavior, desktop acceptance
 or marketplace approval. Each candidate requires its own validation and
-manual acceptance; previous-version results stay separate. Version 0.1.5
-must pass user acceptance before commit, upload or publication.
-The [marketplace listing draft](../../../docs/marketplace-listing.md) in
+manual acceptance; previous-version results stay separate. The linked
+validation record documents the accepted 0.1.5 artifact; current source
+documentation may evolve without rewriting that frozen ZIP.
+The [marketplace listing materials](../../../docs/marketplace-listing.md) in
 the source repository records the actual QwenPaw fields and publication
 status; source upload is separate from marketplace approval.
 

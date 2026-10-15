@@ -32,6 +32,15 @@ use the same hosting or credentials.
 See [naming and migration](naming.md) for the current namespaced ID and the
 separate Data Console clarification contract.
 
+The root bilingual READMEs remain plugin catalogs. Full examples and
+screenshots belong in each plugin's English/Chinese README; both expose
+`#screenshots`. Store originals under
+`plugins/<kind>/<plugin-id>/docs/images/<version>/`. Shared root guides
+link to these sections. If the runtime package does not include images,
+its README can use absolute hosted raw URLs, with a network-access note.
+A documentation update to current source does not replace the README
+inside an accepted, frozen release ZIP.
+
 ## Deliverable boundaries
 
 The Ask User Question by Yance ZIP includes runtime backend files, its single built
@@ -68,7 +77,7 @@ description-specific HTTP endpoint or a host-source patch. No whole-tools
 PUT, Agent reload or automatic all-Agent migration is performed.
 
 Marketplace preparation is separate from source upload and runtime
-packaging. See [the listing draft](marketplace-listing.md) for the actual
+packaging. See [the listing materials](marketplace-listing.md) for the actual
 QwenPaw submission fields, current status and optional demonstration
 materials. A source tag is not a downloadable plugin ZIP or marketplace
 approval.

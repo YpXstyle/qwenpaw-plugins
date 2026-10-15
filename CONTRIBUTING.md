@@ -23,6 +23,16 @@ Keep unrelated host fixes and changes to another contribution out of a
 plugin change. Do not commit user state, credentials, node_modules,
 temporary environments or generated release artifacts.
 
+The root English/Chinese READMEs are collection catalogs. Put complete
+screenshots and examples in the owning plugin's bilingual READMEs, with a
+stable `#screenshots` destination in both languages. Store original images
+under that plugin's `docs/images/<version>/`, not the collection root.
+When the runtime ZIP excludes images, use real hosted raw-image URLs in
+its README and document that viewing them requires network access. Source
+documentation may evolve after a release; never rewrite accepted ZIPs or
+tags merely to update pictures. Shared root guides may link to the plugin
+without duplicating its full gallery.
+
 ## Plugin documentation and metadata
 
 Each plugin maintains English `README.md`, Chinese `README_zh.md`,
@@ -96,5 +106,5 @@ preflight. Tests and preflight do not authorize creating a remote,
 pushing, tagging, uploading a release or submitting to a marketplace.
 Those steps require explicit authorization when they are requested.
 Marketplace fields and draft copy are documented separately in
-[the listing draft](docs/marketplace-listing.md); source upload and a
+[the listing materials](docs/marketplace-listing.md); source upload and a
 version tag do not establish marketplace publication.
