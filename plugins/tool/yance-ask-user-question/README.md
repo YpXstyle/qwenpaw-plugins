@@ -5,12 +5,15 @@ English | [简体中文](README_zh.md) | [Changelog](CHANGELOG.md)
 Collect structured answers during direct Console conversations, then resume
 the same Agent turn.
 
-**Version:** 0.1.4 local candidate · **Author:** Yance · **License:** Apache-2.0
+**Version:** 0.1.5 local candidate · **Author:** Yance · **License:** Apache-2.0
 
 Plugin ID: `yance-ask-user-question`. Tool and approval source:
 `yance_ask_user_question`. These identifiers are unchanged from 0.1.2;
 the tool is **disabled by default**. This independently maintained plugin
 has not been published to or approved by the AgentScope marketplace.
+The [source repository](https://github.com/YpXstyle/qwenpaw-plugins) has
+the 0.1.4 source tag; 0.1.5 remains local and awaits user acceptance.
+There is no GitHub Release/download asset or marketplace listing yet.
 
 ## Features
 
@@ -18,11 +21,15 @@ has not been published to or approved by the AgentScope marketplace.
   selection and an Other/free-text alternative supplied by the client.
 - Answer one question at a time. Previous/Next preserves drafts; the final
   submission sends the complete batch after every question is answered.
-- Only an option label ending exactly in `(Recommended)` gets a star. It
-  remains visible when selected; the unselected option has a soft green
-  outline/background. Putting it first is the model's responsibility.
-  Nothing is automatically selected or reordered; there is no additional
-  `recommended` field or inference from the option description.
+- Recognize explicit terminal English `Recommended` markers without case
+  sensitivity and Chinese `推荐` markers in paired `()` or `（）`.
+  Trailing whitespace is ignored for display matching only; zero-width
+  characters are not stripped. Every marked option keeps a star when selected
+  and have a soft green outline/background when unselected.
+- Separately display marked options first, retaining source order within
+  the marked and unmarked groups. The original option array/labels,
+  selection state and answer payload are unchanged. Nothing is preselected;
+  there is no new `recommended` field or inference from description/position.
 - Show question context and the currently selected single-choice option's
   preview. Multiple-choice questions do not show option previews.
 - Return structured answers to the waiting tool in the same call and turn.
@@ -39,9 +46,12 @@ The question form retains the 0.1.3 layout using `Card.classNames.body` for the 
 `qwenpaw` component prefix, with available space measured from its actual
 anchor and `visualViewport`. This targets clipped headers/actions in short,
 non-fullscreen desktop windows while retaining drafts during layout changes.
-Question behavior and the strict English recommendation marker are
-unchanged in 0.1.4. This candidate's automated and user acceptance are
-pending; existing 0.1.3 packages and acceptance evidence stay unchanged.
+The framework's model instruction still requests English `(Recommended)`
+and first position; it is unchanged. Chinese markers are display
+compatibility, not a schema change. Other marker languages are not parsed;
+seven-language support refers to the plugin's badges and interface.
+Each candidate requires evidence bound to its own source/ZIP. Version
+0.1.5 is awaiting user acceptance; keep the accepted 0.1.4 ZIP unchanged.
 
 ## Install and upgrade
 
@@ -52,7 +62,7 @@ published download URLs.
 With QwenPaw running, upload the ZIP through plugin management or run:
 
 ```bash
-qwenpaw plugin install "/path/to/yance-ask-user-question-0.1.4.zip"
+qwenpaw plugin install "/path/to/yance-ask-user-question-0.1.5.zip"
 ```
 
 On the development-baseline CLI, a local ZIP is uploaded to the running
@@ -81,7 +91,7 @@ their pending questions, then uninstall only that old plugin:
 
 ```bash
 qwenpaw plugin uninstall ask-user-question-preview
-qwenpaw plugin install "/path/to/yance-ask-user-question-0.1.4.zip"
+qwenpaw plugin install "/path/to/yance-ask-user-question-0.1.5.zip"
 ```
 
 Refresh Console, confirm the old plugin tool is no longer available, and
@@ -91,20 +101,20 @@ form drafts and old tool configuration are not migrated. Leave the
 official `ask_user_question` tool untouched. Keep the original 0.1.1 ZIP
 and its evidence; a new ID/version/hash requires its own acceptance.
 
-### Upgrade the same ID from 0.1.3 to 0.1.4
+### Upgrade the same ID from 0.1.4 to 0.1.5
 
-If `yance-ask-user-question` 0.1.3 is installed, use `--force` to replace it
-with the 0.1.4 candidate under the same ID:
+If `yance-ask-user-question` 0.1.4 is installed, use `--force` to replace it
+with the 0.1.5 candidate under the same ID, when authorized for acceptance:
 
 ```bash
-qwenpaw plugin install "/path/to/yance-ask-user-question-0.1.4.zip" --force
+qwenpaw plugin install "/path/to/yance-ask-user-question-0.1.5.zip" --force
 ```
 
 Finish or decline pending questions first. Afterwards refresh Console;
 for source-launched Desktop, close the window and wait for its launch
 command to exit before restarting. Check the Agent's tool settings and
 begin a new conversation. This does not migrate unsubmitted answers.
-Keep the 0.1.3 package and acceptance evidence unchanged. Later upgrades
+Keep the accepted 0.1.4 package and evidence unchanged. Later upgrades
 retaining this ID use the same command form with their actual versioned ZIP.
 An existing saved tool description does not update from the manifest
 automatically: use the explicit settings-page sync below. There is no need
@@ -134,18 +144,22 @@ it; model behavior needs its own real-model acceptance.
 ### Reproducible recommendation acceptance
 
 Ask the Agent to call **`yance_ask_user_question` explicitly** with the
-following input, preserving every option label exactly. This is a manual
-test fixture, not evidence that the user's earlier question used these labels.
+following input, preserving every option label and its source position.
+The first question reproduces the reported Chinese marker on the second
+option; the second checks that unmarked options stay unmarked.
 
 ```json
 {
   "questions": [
     {
-      "question": "Which plan should be used for the recommendation style check?",
-      "header": "Recommend",
+      "question": "请选择每晚住宿预算",
+      "header": "住宿预算",
       "options": [
-        {"label": "方案 A (Recommended)", "description": "Plan A for the marked option."},
-        {"label": "方案 B", "description": "Plan B for the unmarked alternative."}
+        { "label": "200-400/晚", "description": "较低的每晚住宿预算。" },
+        {
+          "label": "400-600/晚（推荐）",
+          "description": "更宽裕的每晚住宿预算。"
+        }
       ],
       "multi_select": false
     },
@@ -153,8 +167,14 @@ test fixture, not evidence that the user's earlier question used these labels.
       "question": "Which plan should be used without a recommendation hint?",
       "header": "No hint",
       "options": [
-        {"label": "方案 C", "description": "Plan C without a recommendation suffix."},
-        {"label": "方案 D", "description": "Plan D without a recommendation suffix."}
+        {
+          "label": "方案 C",
+          "description": "Plan C without a recommendation suffix."
+        },
+        {
+          "label": "方案 D",
+          "description": "Plan D without a recommendation suffix."
+        }
       ],
       "multi_select": false
     }
@@ -162,14 +182,23 @@ test fixture, not evidence that the user's earlier question used these labels.
 }
 ```
 
-Before selecting anything, verify that only the first option has a star
-and soft green treatment, with no preselection. Select it and verify the
-orange star remains. On the second question, verify no recommendation is
-invented. Navigate back and resize the desktop window to check retained
-drafts, then answer both questions and submit the batch. Inspect Parameters
-to confirm the actual labels before judging the result: a different model
-payload is not proof of this fixture. Do not add a `recommended` property
-or infer a recommendation from prose descriptions.
+Before selecting anything, verify that `400-600/晚` is displayed first
+with a star and soft green treatment, although it is second in Parameters.
+There must be no preselection. Select it and verify that its star remains.
+On the second question, verify no recommendation is invented and source
+order remains. Navigate back and resize to check retained drafts, then
+submit both answers. The first selected value must remain exactly
+`400-600/晚（推荐）`, including its original marker.
+
+Also check `(Recommended)`, `(recommended)`, `（RECOMMENDED）`, `(推荐)`
+and `（推荐）`, with ordinary trailing whitespace. A zero-width character
+after the marker, such as the notation `(推荐)\u200B`, is not stripped and
+must not match. `(不推荐)`, a marker in the middle of a label and a
+description mentioning recommendation do not imply a badge. Multiple
+marked options keep their relative source order when displayed first.
+Inspect Parameters before judging results: a different model payload is
+not proof of this fixture. Do not add a `recommended` property or infer
+recommendation from option position.
 
 ## While waiting: where to answer
 
@@ -198,7 +227,7 @@ The Agent's question text and option labels are not translated by the card.
 Details shows the localized plugin description, version, author and contact.
 The display name stays **Ask User Question by Yance**.
 
-The default plugin/tool description is Chinese in 0.1.4. This is a fixed
+The default plugin/tool description is Chinese. This is a fixed
 fallback for native lists, not automatic list internationalization.
 Manifest `description_i18n` is plugin-description metadata, not a tool-name
 translation API. The targeted host's native Tools list intentionally uses
@@ -253,9 +282,10 @@ is not promised.
 ## Support and compatibility
 
 Supported scope is **direct interactive Console Chat with its main Agent**.
-Desktop Chat shares the extension interfaces, but **0.1.4 still needs manual
-acceptance on the actual target desktop build**. Prior browser or 0.1.3
-results do not establish that acceptance.
+Desktop Chat shares the extension interfaces. Each candidate requires
+manual acceptance on the actual target desktop build; earlier browser or
+version results do not establish that acceptance. **Version 0.1.5 awaits
+user acceptance.**
 
 IM, subagents, cross-configuration delegation, remote agents, ACP, TUI,
 cron, heartbeat, mail monitoring, other headless/unattended entry points,
@@ -269,14 +299,14 @@ persisting unfinished forms. Refusal returns `DENIED`, stopping returns
 `INTERRUPTED`, and timeout, shutdown or native approval without submitted
 answers returns `ERROR`.
 
-| Item | Version and evidence boundary |
-| --- | --- |
-| Development baseline | QwenPaw `2.2.2`, commit `5c56644a6e130762a236f8c946103e95a0a1eec8` |
-| Candidate automated acceptance target | Sole current target: stable `2.2.2 / 5c56644a6e130762a236f8c946103e95a0a1eec8`; this round is pending, with results bound to the final ZIP hash |
-| Manifest and actual version checks | Declared `min: 2.2.2`; the documented derived upper bound is `<2.3.0`, but this baseline temporarily enforces only the minimum, not the upper bound |
-| Framework dependency | Host-provided AgentScope `2.0.10`; no second framework installation |
-| Other host versions | Not individually verified; admission does not prove compatibility across the range |
-| Web and Desktop manual acceptance | Pending this round's user confirmation for 0.1.4; older results do not replace it |
+| Item                                  | Version and evidence boundary                                                                                                                       |
+| ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Development baseline                  | QwenPaw `2.2.2`, commit `5c56644a6e130762a236f8c946103e95a0a1eec8`                                                                                  |
+| Candidate automated acceptance target | Stable `2.2.2 / 5c56644a6e130762a236f8c946103e95a0a1eec8`; every candidate has its own source/ZIP-bound validation report                           |
+| Manifest and actual version checks    | Declared `min: 2.2.2`; the documented derived upper bound is `<2.3.0`, but this baseline temporarily enforces only the minimum, not the upper bound |
+| Framework dependency                  | Host-provided AgentScope `2.0.10`; no second framework installation                                                                                 |
+| Other host versions                   | Not individually verified; admission does not prove compatibility across the range                                                                  |
+| Web and Desktop manual acceptance     | Record separately per exact candidate ZIP; 0.1.5 is awaiting user confirmation                                                                      |
 
 The development baseline is unmodified upstream QwenPaw `5c56644a`
 (`2.2.2`) with its pinned AgentScope `2.0.10`. Manifest minimum `2.2.2`
@@ -308,25 +338,26 @@ requests and results are not interchangeable.
 
 ## Troubleshooting
 
-| Symptom | Check |
-| --- | --- |
-| The Agent cannot use the tool | Confirm the plugin loaded, enable the tool for that Agent, refresh Console and begin a direct Chat turn. |
-| No question form appears | Check that the built frontend is included and loaded; native Inbox and headless entry points are unsupported. |
-| A recommendation star is missing | The raw option label must end exactly in `(Recommended)`; the client does not infer recommendations. |
-| The star disappears after selecting | Check the fixture above and record the actual label/version; refresh/restart old frontend sessions before retesting. |
-| Header/actions clip in a short desktop window | Check this version on the real host prefix and record window size, zoom and viewport; do not treat an isolated fixture as desktop acceptance. |
-| Native Tools list shows the raw tool name | This is the host's current plugin-tool presentation policy; use this exact ID and the plugin Details for localized explanations. |
-| An existing tool description is still English | Open this plugin's settings page for that Agent and explicitly sync the default description; updating the manifest does not rewrite an existing saved description. |
-| Sync is disabled or refused | Check the selected Agent, tool existence and current description; reload after a read failure or description conflict. Do not bypass checks by uninstalling. |
-| The saved description changed before sync | The locked comparison refuses a stale expected description; read the current value and explicitly retry. |
-| The settings menu or new version is absent | Refresh Console; for source-launched Desktop close the window, wait for its launch command to exit and restart. Confirm the installed version, then start a new conversation. |
-| Bottom-composer text does not resolve the question | It is a separate message/draft and may be queued; submit structured answers in the question card. |
-| Preview is absent | Select a single-choice option with `preview`; previews are not shown for multiple-choice questions. |
-| Submission fails | Check the host login, selected Agent and expiry; the current form keeps drafts after a failed submit. |
-| Request expired or was already resolved | Ask the Agent to create a new question request; an old request cannot be replayed. |
-| Native approval completed without answers | It returns an error; use the plugin's Chat form to collect structured answers. |
-| Questions stay in the model's language | Language switching translates the plugin UI, not model-authored questions/options. |
-| Host upgrade breaks loading or behavior | Revalidate against the new host; do not install a second framework runtime as a workaround. |
+| Symptom                                            | Check                                                                                                                                                                                                         |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| The Agent cannot use the tool                      | Confirm the plugin loaded, enable the tool for that Agent, refresh Console and begin a direct Chat turn.                                                                                                      |
+| No question form appears                           | Check that the built frontend is included and loaded; native Inbox and headless entry points are unsupported.                                                                                                 |
+| A recommendation star is missing                   | Check an explicit terminal English `Recommended` (case-insensitive) or Chinese `推荐` in paired `()`/`（）`. Only trailing display whitespace is ignored; zero-width characters and prose are not normalized. |
+| A marked option is not displayed first             | Confirm the active version and raw Parameters. Version 0.1.5 displays marked options first stably; source data and raw submitted labels remain unchanged.                                                     |
+| The star disappears after selecting                | Check the fixture above and record the actual label/version; refresh/restart old frontend sessions before retesting.                                                                                          |
+| Header/actions clip in a short desktop window      | Check this version on the real host prefix and record window size, zoom and viewport; do not treat an isolated fixture as desktop acceptance.                                                                 |
+| Native Tools list shows the raw tool name          | This is the host's current plugin-tool presentation policy; use this exact ID and the plugin Details for localized explanations.                                                                              |
+| An existing tool description is still English      | Open this plugin's settings page for that Agent and explicitly sync the default description; updating the manifest does not rewrite an existing saved description.                                            |
+| Sync is disabled or refused                        | Check the selected Agent, tool existence and current description; reload after a read failure or description conflict. Do not bypass checks by uninstalling.                                                  |
+| The saved description changed before sync          | The locked comparison refuses a stale expected description; read the current value and explicitly retry.                                                                                                      |
+| The settings menu or new version is absent         | Refresh Console; for source-launched Desktop close the window, wait for its launch command to exit and restart. Confirm the installed version, then start a new conversation.                                 |
+| Bottom-composer text does not resolve the question | It is a separate message/draft and may be queued; submit structured answers in the question card.                                                                                                             |
+| Preview is absent                                  | Select a single-choice option with `preview`; previews are not shown for multiple-choice questions.                                                                                                           |
+| Submission fails                                   | Check the host login, selected Agent and expiry; the current form keeps drafts after a failed submit.                                                                                                         |
+| Request expired or was already resolved            | Ask the Agent to create a new question request; an old request cannot be replayed.                                                                                                                            |
+| Native approval completed without answers          | It returns an error; use the plugin's Chat form to collect structured answers.                                                                                                                                |
+| Questions stay in the model's language             | Language switching translates the plugin UI, not model-authored questions/options.                                                                                                                            |
+| Host upgrade breaks loading or behavior            | Revalidate against the new host; do not install a second framework runtime as a workaround.                                                                                                                   |
 
 ## Build and validation
 
@@ -347,9 +378,12 @@ node_modules, user state or second AgentScope runtime is shipped.
 
 Automated results cover only their recorded source/archive hashes. They
 do not establish full upstream CI, cloud-model behavior, desktop acceptance
-or marketplace approval. The current 0.1.4 candidate requires its own
-validation and manual acceptance; previous-version results stay separate.
-Commit and publication of this candidate require user acceptance first.
+or marketplace approval. Each candidate requires its own validation and
+manual acceptance; previous-version results stay separate. Version 0.1.5
+must pass user acceptance before commit, upload or publication.
+The [marketplace listing draft](../../../docs/marketplace-listing.md) in
+the source repository records the actual QwenPaw fields and publication
+status; source upload is separate from marketplace approval.
 
 ## License and maintenance
 

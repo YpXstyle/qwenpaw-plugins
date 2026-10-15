@@ -41,9 +41,13 @@ Ask User Question by Yance ZIP 包含后端运行文件、单个前端构建产�
 官方没有独立的 `name_i18n` 或原生工具 `display_name` 字段。
 兼容的 `name`/`description` 多语言对象会按英文优先压成字符串，不按当前界面语言动态选择。
 
-因此本集合在 0.1.4 使用中文默认介绍，保留英文品牌名、稳定 ID、七语插件界面和中英文 README。
+因此本集合使用中文默认介绍，保留英文品牌名、稳定 ID、七语插件界面和中英文 README。
 已有 Agent 的工具介绍可能已持久保存，仅修改清单不会覆盖它们。
 插件设置页通过自己的 HTTP 接口提供当前 Agent 的显式同步，复用宿主官方
 `update_agent_config_async(agent_id, updater)` API，在同一宿主配置锁内比较保存的介绍，
 仅修改本工具 description，保留其他值。这不是上游已有的专用介绍 HTTP 接口，也不修改宿主源码。
 不发送全 tools PUT，不重新加载 Agent，也不自动迁移全部 Agent。
+
+市场材料准备独立于源码上传及运行包打包。
+实际 QwenPaw 提交字段、当前状态与可选演示材料见[市场材料草稿](marketplace-listing_zh.md)。
+源码 tag 不等于可下载的插件 ZIP，也不等于市场审核通过。

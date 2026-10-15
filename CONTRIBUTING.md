@@ -36,7 +36,7 @@ supported; do not assume every host page consumes them. Do not invent a
 manifest email or `name_i18n` field. This collection's maintainer is
 **Yance**; contact [xstyle@qq.com](mailto:xstyle@qq.com).
 
-For 0.1.4, the plain default description is Chinese. Keep the English
+The plain default description is Chinese. Keep the English
 brand name, stable IDs, seven-language UI and bilingual READMEs. Native
 installed-plugin/tool lists use fixed strings on the target host; do not
 claim automatic localization there. Description sync uses the plugin's
@@ -50,10 +50,14 @@ whole-tools PUT, reload an Agent, auto-sync every Agent or uninstall to
 sync. No idle-task or paused-heartbeat requirement is introduced.
 
 Ask User Question by Yance keeps the framework's schema and metadata contracts.
-Recommendation styling is driven only by an option label ending exactly
-in `(Recommended)`; it must not preselect an answer or add a schema field.
-Keep the star visible after selection and leave placement of a recommended
-option first to the model. Use public extension points for the question
+Recommendation display accepts only explicit English `Recommended`
+(case-insensitive) or Chinese `推荐` suffixes in paired ASCII/full-width
+parentheses. Ignore trailing whitespace for display matching only; do not
+strip zero-width characters or infer recommendations from prose, flags or
+position. Display marked options first, retaining original order within
+both groups. Preserve the original option array/labels, selected answers
+and schema, with no preselection. Keep the star after selection. The
+framework model instruction remains unchanged. Use public extension points for the question
 card; do not disable the host composer through private global state.
 Keep the AGENT identity boundary, answer normalization, permission denial,
 unsupported-context rejection and unload cleanup covered by focused tests.
@@ -91,3 +95,6 @@ Follow [RELEASING.md](RELEASING.md) for the manual record and local
 preflight. Tests and preflight do not authorize creating a remote,
 pushing, tagging, uploading a release or submitting to a marketplace.
 Those steps require explicit authorization when they are requested.
+Marketplace fields and draft copy are documented separately in
+[the listing draft](docs/marketplace-listing.md); source upload and a
+version tag do not establish marketplace publication.

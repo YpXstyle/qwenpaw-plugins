@@ -55,7 +55,7 @@ description maps. There is no separate official `name_i18n` or native-tool
 flattened to a string with English preference rather than selected from
 the current UI language.
 
-This collection therefore uses a Chinese default description for 0.1.4,
+This collection therefore uses a Chinese default description,
 retains the English brand name and stable IDs, and keeps seven-language
 plugin UI plus English/Chinese READMEs. Existing Agent tool descriptions
 may have been saved earlier; a manifest change alone does not overwrite
@@ -66,3 +66,9 @@ description and changes only this tool's description under the same host
 configuration lock, preserving other values. This is not an upstream
 description-specific HTTP endpoint or a host-source patch. No whole-tools
 PUT, Agent reload or automatic all-Agent migration is performed.
+
+Marketplace preparation is separate from source upload and runtime
+packaging. See [the listing draft](marketplace-listing.md) for the actual
+QwenPaw submission fields, current status and optional demonstration
+materials. A source tag is not a downloadable plugin ZIP or marketplace
+approval.

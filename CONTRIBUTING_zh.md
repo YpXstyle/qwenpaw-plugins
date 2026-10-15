@@ -28,7 +28,7 @@
 不发明清单邮箱或 `name_i18n` 字段。本集合维护者为 **Yance**，
 联系邮箱：[xstyle@qq.com](mailto:xstyle@qq.com)。
 
-0.1.4 的普通默认介绍使用中文，保留英文品牌名、稳定 ID、七语界面和双语 README。
+普通默认介绍使用中文，保留英文品牌名、稳定 ID、七语界面和双语 README。
 目标宿主的已安装插件/工具列表使用固定字符串，不能宣称这些页面自动国际化。
 介绍同步使用插件自己的 HTTP 接口，复用宿主官方
 `update_agent_config_async(agent_id, updater)` 配置 API，由用户针对当前 Agent 显式触发。
@@ -38,8 +38,10 @@ Agent 身份不符、工具不存在或介绍冲突时拒写。
 不增加任务空闲或暂停 heartbeat 的要求。
 
 Ask User Question by Yance 沿用框架 schema 和 metadata 契约。
-推荐样式仅识别严格以 `(Recommended)` 结尾的选项标签，不能自动预选或新增 schema 字段。
-选中后仍应保留星标，推荐项放首位由模型负责。问答卡使用公开扩展点，
+推荐显示仅接受成对半角/全角括号中的英文 `Recommended`（忽略英文大小写）或中文 `推荐` 末尾标记。
+只在显示匹配时忽略尾空白，不删除零宽字符，不从说明、字段或位置猜测推荐。
+带标记选项置前展示，两组内部保持原顺序；不修改原选项数组/标签、已选答案或 schema，不自动预选。
+选中后仍应保留星标，框架提供给模型的原始指令保持不变。问答卡使用公开扩展点，
 不通过私有全局状态禁用宿主主输入框。
 定向测试应覆盖 AGENT 身份边界、答案规范化、权限拒绝、不支持场景的提前退出及卸载清理。
 
@@ -68,3 +70,4 @@ python scripts/validate_plugin.py --plugin yance-ask-user-question --host-source
 人工记录与本地预检见 [RELEASING_zh.md](RELEASING_zh.md)。
 测试及预检通过不等于获得创建远端、推送、打 tag、上传发行包或提交市场的授权。
 这些动作仅在用户明确要求并授权后进行。
+市场字段和文案另见[材料草稿](docs/marketplace-listing_zh.md)，源码上传或版本 tag 不等于市场发布。

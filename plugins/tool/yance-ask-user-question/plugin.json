@@ -1,7 +1,7 @@
 {
   "id": "yance-ask-user-question",
   "name": "Ask User Question by Yance",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "type": "tool",
   "description": "在网页和桌面端的直接对话中收集结构化答案，支持单选、多选和自由输入，等待回答后继续当前任务。",
   "description_i18n": {

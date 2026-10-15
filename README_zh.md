@@ -9,18 +9,26 @@
 
 ## 插件
 
-| 插件 | 稳定 ID | 当前版本 | 范围 |
-| --- | --- | --- | --- |
-| [Ask User Question by Yance](plugins/tool/yance-ask-user-question/README_zh.md) | `yance-ask-user-question` | `0.1.4` 本地候选 | 直接交互的 Console Chat 结构化提问 |
+| 插件                                                                            | 稳定 ID                   | 当前版本           | 范围                               |
+| ------------------------------------------------------------------------------- | ------------------------- | ------------------ | ---------------------------------- |
+| [Ask User Question by Yance](plugins/tool/yance-ask-user-question/README_zh.md) | `yance-ask-user-question` | `0.1.5` 桌面已验收 | 直接交互的 Console Chat 结构化提问 |
 
 Ask User Question by Yance 等待用户给出结构化答案，然后在同一 Agent 轮次继续执行。
 工具默认禁用。安装、配置、示例、限制和排错见插件 README。
-0.1.4 将插件和工具的默认介绍改为中文，并在独立设置页提供当前 Agent 的显式介绍同步。
-英文品牌名、稳定标识、七语插件界面和双语文档保持不变；原生列表显示固定介绍，不会自动切换语言。
-每个候选的验证和人工验收均绑定其版本及 ZIP 哈希；源码上传不等于插件市场发布。
-既有安装包和验收证据保持不变，后续修复独立维护版本。
+0.1.5 修复英文/中文显式推荐后缀的显示，兼容全角括号，带标记选项稳定置前展示，
+不改原始标签、schema 或已选答案。默认中文介绍、当前 Agent 显式介绍同步、英文品牌名及七语界面保留。
+原生列表仍显示固定介绍，不会自动切换语言。0.1.5 已通过维护者 **Yance** 重启 Desktop 后的人工验收，
+版本源码纳入本仓库；GitHub Release 和市场尚未发布。
+已验收 ZIP 和证据保持不变。
 替换早期原型前请先读[命名与迁移说明](docs/naming_zh.md)。
 它不替代 Data Console 内置的澄清工具。
+
+![维护者提供的桌面原图：推荐项未选择时显示绿色样式与星标](docs/images/yance-ask-user-question/0.1.5/dark-recommended-unselected.png)
+
+查看[六张桌面原图图库](docs/yance-ask-user-question-gallery_zh.md)及
+[0.1.5 验证记录](docs/validation/yance-ask-user-question-0.1.5.md)。
+绿色加星标/徽标表示推荐，橙色本身只是普通选中态。
+冻结运行 ZIP 内的候选字样属于打包时点文字，后续验收状态以这些外层记录为准。
 
 ## 安装插件
 
@@ -29,7 +37,7 @@ ZIP 已含前端构建产物，使用者无需 npm。QwenPaw 运行时，
 通过插件管理界面上传，或执行：
 
 ```bash
-qwenpaw plugin install "/path/to/yance-ask-user-question-0.1.4.zip"
+qwenpaw plugin install "/path/to/yance-ask-user-question-0.1.5.zip"
 ```
 
 `/path/to/...` 是示例本地路径，不是下载地址。服务未运行时，
@@ -67,6 +75,8 @@ python scripts/package_plugin.py --plugin yance-ask-user-question --output-dir d
 - [本地发行流程](RELEASING_zh.md)
 - [插件布局与官方要求](docs/plugin-layout_zh.md)
 - [命名与迁移](docs/naming_zh.md)
+- [插件市场材料草稿](docs/marketplace-listing_zh.md)
+- [桌面效果图库](docs/yance-ask-user-question-gallery_zh.md)
 
 ## 许可证与联系
 

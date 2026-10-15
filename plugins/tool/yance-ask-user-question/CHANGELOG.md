@@ -5,7 +5,30 @@
 Versions below describe local development artifacts; they are not public
 release announcements. / 以下记录本地开发产物，不代表已公开发布。
 
-## 0.1.4 — Local candidate / 本地候选
+## 0.1.5 — Local candidate / 本地候选
+
+- Fix explicit recommendation-marker display: accept English `Recommended`
+  case-insensitively and Chinese `推荐` in paired ASCII/full-width
+  parentheses. Ignore trailing whitespace for display only, without
+  stripping zero-width characters.
+- Separately display marked options first, stably within marked/unmarked
+  groups. Preserve source option order/labels, selections, answer metadata
+  and schema; do not preselect or infer markers from description/position.
+- Keep the official AskUser model instruction unchanged. Seven-language
+  badges/UI do not expand parsing to other marker languages.
+- Prepare bilingual QwenPaw marketplace listing materials with the real
+  source URL. Version 0.1.5 awaits user acceptance and is not uploaded or
+  published; the accepted 0.1.4 ZIP and evidence remain unchanged.
+
+- 修复显式推荐标记显示：成对半角/全角括号内的英文 `Recommended` 忽略大小写，中文接受 `推荐`；
+  仅显示匹配忽略尾空白，不删除零宽字符。
+- 独立修复带标记选项稳定置前展示，两组内部保持原顺序；原选项顺序/标签、选择、答案 metadata
+  和 schema 不变，不自动预选，不从说明或位置推断标记。
+- 官方 AskUser 模型指令保持不变，七语徽标/界面不等于解析其他语言标记。
+- 准备使用真实源码地址的双语 QwenPaw 市场材料。0.1.5 待用户验收，未上传或发布；
+  已验收 0.1.4 ZIP 和证据保持不变。
+
+## 0.1.4 — Source tagged / 源码已打 tag
 
 - Use a Chinese default plugin/tool description while preserving the
   English brand name, stable IDs, seven-language UI and bilingual READMEs.
@@ -20,8 +43,8 @@ release announcements. / 以下记录本地开发产物，不代表已公开发�
   requirement is introduced.
 - Keep 0.1.3 question behavior, the strict English `(Recommended)` suffix
   and framework contracts unchanged. Refresh/restart old frontend sessions
-  after upgrading. This candidate still requires its own automation and
-  user acceptance; preserve 0.1.3 packages and recorded evidence.
+  after upgrading. Validation and human acceptance belong to the exact
+  candidate/source/archive hashes; preserve 0.1.3 packages and recorded evidence.
 
 - 插件/工具默认介绍使用中文，保留英文品牌名、稳定 ID、七语界面和双语 README。
 - 新增独立设置页 `/plugins/yance-ask-user-question`，通过插件 HTTP 接口复用宿主官方原子配置更新 API，
@@ -29,7 +52,11 @@ release announcements. / 以下记录本地开发产物，不代表已公开发�
 - 在宿主配置锁内比较预期介绍，仅更新本插件工具；Agent 身份不符、工具不存在或介绍变化时拒写，
   不发送全 tools PUT，不重新加载 Agent，也不要求任务空闲。
 - 保留 0.1.3 问卷行为、严格英文 `(Recommended)` 后缀及框架契约，升级后刷新或重启旧前端。
-  本候选仍需自身自动化和用户验收，保留 0.1.3 安装包及已记录证据。
+  验证和人工验收绑定具体候选、源码及 ZIP 哈希，保留 0.1.3 安装包及已记录证据。
+
+Source tag: [yance-ask-user-question-v0.1.4](https://github.com/YpXstyle/qwenpaw-plugins/tree/yance-ask-user-question-v0.1.4).
+This is source publication, not a GitHub Release or marketplace listing. /
+这是源码发布，不是 GitHub Release 或插件市场上架。
 
 ## 0.1.3 — Local candidate / 本地候选
 
@@ -44,8 +71,8 @@ release announcements. / 以下记录本地开发产物，不代表已公开发�
   distinction between submitting a card answer, queueing a Chat message
   and explicitly interrupting the current run.
 - Target QwenPaw 2.2.2 at `5c56644a6e130762a236f8c946103e95a0a1eec8`
-  with AgentScope 2.0.10. This candidate still requires this round's
-  automation and user desktop acceptance; keep 0.1.2 evidence unchanged.
+  with AgentScope 2.0.10. Each version/archive needs its own validation
+  and user acceptance evidence; keep 0.1.2 evidence unchanged.
 
 - 使用公开 `Card.classNames.body` API 修复真实 `qwenpaw` 组件前缀下的卡片 body
   尺寸约束；按插件自有锚点和 `visualViewport` 测量可用高度，调整较小桌面窗口时保留答案草稿。
@@ -53,7 +80,7 @@ release announcements. / 以下记录本地开发产物，不代表已公开发�
   不新增 schema 字段、不自动选择，也不从说明文字猜测推荐。
 - 说明原生工具列表使用原始字段的本地化限制，并区分卡片提交答案、主 Chat 消息排队及显式打断当前运行。
 - 目标为 QwenPaw 2.2.2 `5c56644a6e130762a236f8c946103e95a0a1eec8` 与 AgentScope 2.0.10。
-  本候选仍需本轮自动化和用户桌面验收，0.1.2 证据保持不变。
+  每个版本/ZIP 均需自身验证及用户验收证据，0.1.2 证据保持不变。
 
 ## 0.1.2 — Local candidate / 本地候选
 

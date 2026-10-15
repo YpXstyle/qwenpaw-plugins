@@ -5,6 +5,7 @@ import { sendDecision, SubmissionError } from "./api";
 import { resolveLocale, translate, type MessageKey } from "./locale";
 import {
   buildAnswers,
+  displayOptions,
   hasAnswer,
   optionDisplay,
   readQuestions,
@@ -240,7 +241,7 @@ function QuestionForm({ approval, onResolved }: ChatApprovalRendererProps) {
               <pre className="yance-auq-panel">{question.context}</pre>
             ) : null}
             <div className="yance-auq-options">
-              {question.options.map((option) => {
+              {displayOptions(question.options).map((option) => {
                 const display = optionDisplay(option.label);
                 return (
                   <Button

@@ -818,17 +818,17 @@ describe("recommendation emphasis", () => {
     }
   });
 
-  it("keeps the model's option order when the recommendation is second", () => {
+  it("presents a marked recommendation first without preselecting it", () => {
     renderQuestion([{ ...first, options: [...first.options].reverse() }]);
     const options = screen.getAllByRole("button", { pressed: false });
     expect(options[0]).toHaveAccessibleName(
-      "PostgreSQL Supports multiple writers",
-    );
-    expect(options[1]).toHaveAccessibleName(
       "SQLite Recommended Keeps setup simple",
     );
-    expect(options[0].querySelector("svg")).toBeNull();
-    expect(options[1].querySelector("svg")).not.toBeNull();
+    expect(options[1]).toHaveAccessibleName(
+      "PostgreSQL Supports multiple writers",
+    );
+    expect(options[0].querySelector("svg")).not.toBeNull();
+    expect(options[1].querySelector("svg")).toBeNull();
     expect(
       screen.queryByRole("button", { pressed: true }),
     ).not.toBeInTheDocument();

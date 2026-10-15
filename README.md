@@ -10,23 +10,32 @@ has been published yet.
 
 ## Plugins
 
-| Plugin | Stable ID | Current version | Scope |
-| --- | --- | --- | --- |
-| [Ask User Question by Yance](plugins/tool/yance-ask-user-question/README.md) | `yance-ask-user-question` | `0.1.4` local candidate | Structured questions in direct interactive Console Chat |
+| Plugin                                                                       | Stable ID                 | Current version          | Scope                                                   |
+| ---------------------------------------------------------------------------- | ------------------------- | ------------------------ | ------------------------------------------------------- |
+| [Ask User Question by Yance](plugins/tool/yance-ask-user-question/README.md) | `yance-ask-user-question` | `0.1.5` Desktop accepted | Structured questions in direct interactive Console Chat |
 
 Ask User Question by Yance waits for structured answers and continues the same
 Agent turn. Its tool is disabled by default. See the plugin README for
 installation, configuration, examples, limitations and troubleshooting.
-Version 0.1.4 uses a Chinese default plugin/tool description and adds an
-explicit current-Agent description sync on its own settings page. The
-English brand name, stable identifiers, seven-language plugin UI and
-bilingual documentation remain. Native lists show a fixed description;
-they do not switch languages automatically. Validation and human acceptance
-are bound to each candidate version and ZIP hash. Source upload is separate
-from marketplace publication; existing packages and evidence remain unchanged.
-Subsequent fixes use independent versions. See
+Version 0.1.5 fixes display for explicit English/Chinese recommendation
+suffixes, including full-width parentheses. Marked options are displayed
+first without changing source labels, schema or selected answers. The
+Chinese default description, explicit current-Agent description sync,
+English brand name and seven-language UI remain. Native lists show a
+fixed description rather than switching languages automatically.
+Version 0.1.5 passed Desktop acceptance by maintainer **Yance** after
+restarting. Its source is maintained in this repository. GitHub Release
+and marketplace publication have not been completed. Preserve accepted ZIPs and their evidence. See
 [naming and migration](docs/naming.md) before replacing an earlier prototype.
 It does not replace Data Console's built-in clarification tool.
+
+![Maintainer Desktop screenshot: green recommended option with a star before selection](docs/images/yance-ask-user-question/0.1.5/dark-recommended-unselected.png)
+
+View the [six original Desktop screenshots](docs/yance-ask-user-question-gallery.md)
+and [0.1.5 validation record](docs/validation/yance-ask-user-question-0.1.5.md).
+Green plus a star/badge marks a recommendation; orange alone is the
+ordinary selected state. Candidate wording inside the frozen runtime ZIP
+reflects its packing time; these external records document later acceptance.
 
 ## Install a plugin
 
@@ -35,7 +44,7 @@ The ZIP includes its built frontend; users do not need npm. With QwenPaw
 running, upload it through plugin management or run:
 
 ```bash
-qwenpaw plugin install "/path/to/yance-ask-user-question-0.1.4.zip"
+qwenpaw plugin install "/path/to/yance-ask-user-question-0.1.5.zip"
 ```
 
 `/path/to/...` is an example local path, not a download URL. Without a
@@ -80,6 +89,8 @@ before local release preflight; automation does not supply that approval.
 - [Local release process](RELEASING.md)
 - [Plugin layout and official requirements](docs/plugin-layout.md)
 - [Naming and migration](docs/naming.md)
+- [Marketplace listing draft](docs/marketplace-listing.md)
+- [Desktop screenshot gallery](docs/yance-ask-user-question-gallery.md)
 
 ## License and contact
 

@@ -84,8 +84,27 @@ export function optionDisplay(label: string): {
   label: string;
   recommended: boolean;
 } {
-  const suffix = "(Recommended)";
-  return label.endsWith(suffix)
-    ? { label: label.slice(0, -suffix.length).trimEnd(), recommended: true }
-    : { label, recommended: false };
+  const displayLabel = label.trimEnd();
+  const marker = /(?:\((?:Recommended|推荐)\)|（(?:Recommended|推荐)）)$/i.exec(
+    displayLabel,
+  );
+  return marker
+    ? {
+        label: displayLabel.slice(0, marker.index).trimEnd(),
+        recommended: true,
+      }
+    : { label: displayLabel, recommended: false };
+}
+
+/** Presentation order only: retain original option objects and answer labels. */
+export function displayOptions(
+  options: readonly QuestionOption[],
+): QuestionOption[] {
+  const recommended: QuestionOption[] = [];
+  const remaining: QuestionOption[] = [];
+  for (const option of options)
+    (optionDisplay(option.label).recommended ? recommended : remaining).push(
+      option,
+    );
+  return [...recommended, ...remaining];
 }

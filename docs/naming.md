@@ -4,17 +4,17 @@ English | [简体中文](naming_zh.md)
 
 ## Current identifiers
 
-| Purpose | Value |
-| --- | --- |
-| Display name | Ask User Question by Yance |
-| Plugin ID | `yance-ask-user-question` |
-| Tool name and approval source | `yance_ask_user_question` |
-| Source directory | `plugins/tool/yance-ask-user-question/` |
-| Test module | `tests/yance_ask_user_question/` |
-| Answer API | `/api/yance-ask-user-question/answer` |
-| UI readiness marker | `yance_ask_user_question_ui` |
-| Current version | `0.1.4` local candidate |
-| Independent tag convention | `yance-ask-user-question-v0.1.4` |
+| Purpose                       | Value                                   |
+| ----------------------------- | --------------------------------------- |
+| Display name                  | Ask User Question by Yance              |
+| Plugin ID                     | `yance-ask-user-question`               |
+| Tool name and approval source | `yance_ask_user_question`               |
+| Source directory              | `plugins/tool/yance-ask-user-question/` |
+| Test module                   | `tests/yance_ask_user_question/`        |
+| Answer API                    | `/api/yance-ask-user-question/answer`   |
+| UI readiness marker           | `yance_ask_user_question_ui`            |
+| Current version               | `0.1.5` maintainer accepted             |
+| Independent tag convention    | `yance-ask-user-question-v0.1.5`        |
 
 Plugin IDs use lowercase letters/digits and hyphens and must be unique.
 The `yance-` author prefix is this collection's collision-avoidance choice,
@@ -54,7 +54,7 @@ belong to that old plugin, not to the new namespace.
 3. Install the new candidate ZIP without treating it as a same-ID upgrade:
 
    ```bash
-   qwenpaw plugin install "/path/to/yance-ask-user-question-0.1.4.zip"
+   qwenpaw plugin install "/path/to/yance-ask-user-question-0.1.5.zip"
    ```
 
 4. Refresh Console, check that the old plugin tool is no longer available,
@@ -72,14 +72,17 @@ All paths shown are local placeholders, not published download links.
 
 Once the new ID is installed, later versions retaining
 `yance-ask-user-question` can use `qwenpaw plugin install ... --force`.
-This includes the same-ID 0.1.3 to 0.1.4 upgrade. Keep the 0.1.3 packages
-and acceptance evidence unchanged; 0.1.4 needs its own validation.
+This includes the same-ID 0.1.4 to 0.1.5 upgrade. Keep accepted packages
+and evidence unchanged. Each candidate needs its own validation and
+manual acceptance. Maintainer **Yance** has confirmed 0.1.5 Desktop
+acceptance; see the [validation record](validation/yance-ask-user-question-0.1.5.md).
 That operation still does not persist unanswered forms. A changed plugin
 ID, source, version or ZIP hash needs matching validation and manual
 acceptance; older prototype acceptance does not transfer automatically.
 
-Version 0.1.4 changes the default description, not the English brand name,
-plugin ID or tool name. Its settings page is
+Version 0.1.5 changes recommendation display, not the English brand name,
+plugin ID, tool name or schema. The Chinese default description remains.
+Its settings page is
 `/plugins/yance-ask-user-question`. Syncing an existing description is a
 separate, explicit action for the selected Agent; it does not reinstall
 the plugin or automatically update every Agent. Finish old pending
@@ -89,3 +92,7 @@ command to exit before restarting.
 
 This local collection is independent of the QwenPaw feature PR. Naming
 and migration here do not alter its source, branch or published PR.
+The public [source repository](https://github.com/YpXstyle/qwenpaw-plugins)
+contains the 0.1.4 source tag, and 0.1.5 version source is maintained in
+this repository. GitHub Release and marketplace publication are separate
+and have not been completed.

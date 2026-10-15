@@ -4,17 +4,17 @@
 
 ## 当前标识
 
-| 用途 | 值 |
-| --- | --- |
-| 展示名 | Ask User Question by Yance |
-| 插件 ID | `yance-ask-user-question` |
-| 工具名与审批来源 | `yance_ask_user_question` |
-| 源码目录 | `plugins/tool/yance-ask-user-question/` |
-| 测试模块 | `tests/yance_ask_user_question/` |
-| 回答 API | `/api/yance-ask-user-question/answer` |
-| 界面就绪标记 | `yance_ask_user_question_ui` |
-| 当前版本 | `0.1.4` 本地候选 |
-| 独立 tag 约定 | `yance-ask-user-question-v0.1.4` |
+| 用途             | 值                                      |
+| ---------------- | --------------------------------------- |
+| 展示名           | Ask User Question by Yance              |
+| 插件 ID          | `yance-ask-user-question`               |
+| 工具名与审批来源 | `yance_ask_user_question`               |
+| 源码目录         | `plugins/tool/yance-ask-user-question/` |
+| 测试模块         | `tests/yance_ask_user_question/`        |
+| 回答 API         | `/api/yance-ask-user-question/answer`   |
+| 界面就绪标记     | `yance_ask_user_question_ui`            |
+| 当前版本         | `0.1.5` 维护者已验收                    |
+| 独立 tag 约定    | `yance-ask-user-question-v0.1.5`        |
 
 插件 ID 使用小写字母/数字及连字符，并保持唯一。
 `yance-` 作者前缀是本集合减少冲突的选择，不是官方要求所有插件使用的前缀。
@@ -48,7 +48,7 @@ Data Console 已有服务于其自身澄清流程的内置 `ask_user_question`�
 3. 安装新的候选 ZIP，不将其视为同 ID 升级：
 
    ```bash
-   qwenpaw plugin install "/path/to/yance-ask-user-question-0.1.4.zip"
+   qwenpaw plugin install "/path/to/yance-ask-user-question-0.1.5.zip"
    ```
 
 4. 刷新 Console，确认旧插件工具已不再可用，在目标 Agent 明确启用
@@ -62,15 +62,18 @@ Data Console 已有服务于其自身澄清流程的内置 `ask_user_question`�
 ## 后续升级与验收
 
 新 ID 安装完成后，保留 `yance-ask-user-question` 的后续版本才适用
-`qwenpaw plugin install ... --force`，包括同 ID 的 0.1.3 升级至 0.1.4，
-仍不会持久化未答表单。0.1.3 安装包及验收证据保持原样，0.1.4 需要自身验证。
+`qwenpaw plugin install ... --force`，包括同 ID 的 0.1.4 升级至 0.1.5，
+仍不会持久化未答表单。已验收包与证据保持原样，每个候选均需自身验证和人工验收；0.1.5 已通过维护者 **Yance** 的桌面验收，见
+[验证记录](validation/yance-ask-user-question-0.1.5.md)。
 插件 ID、源码、版本或 ZIP 哈希改变后，应有对应验证及人工验收记录，
 旧原型的验收不会自动转移。
 
-0.1.4 仅调整默认介绍，英文品牌名、插件 ID 和工具名不变。
+0.1.5 调整推荐显示，英文品牌名、插件 ID、工具名及 schema 不变，默认中文介绍保留。
 设置页路径为 `/plugins/yance-ask-user-question`；已有介绍的同步是针对当前 Agent 的
 单独显式操作，不重新安装插件，也不自动更新全部 Agent。
 升级前处理旧待答，升级后刷新 Console 并开始新对话。
 源码启动的桌面版应先关闭窗口，等启动命令退出后再启动。
 
 本地集合仓库独立于 QwenPaw 功能 PR，此处命名和迁移不修改其源码、分支或已发表 PR。
+[公开源码仓库](https://github.com/YpXstyle/qwenpaw-plugins)已有 0.1.4 源码 tag；
+0.1.5 版本源码纳入本仓库；GitHub Release 和插件市场尚未发布，源码上传或 tag 不等于市场发布。

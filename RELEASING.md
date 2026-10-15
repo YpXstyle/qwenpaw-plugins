@@ -12,20 +12,25 @@ not automatically publish them.
 Update its `plugin.json` version, frontend package version when present,
 English/Chinese READMEs and changelog together. Preserve its installation
 ID and compatible internal registrations. For the current plugin the
-candidate is `yance-ask-user-question` **0.1.4**. Keep existing 0.1.3
+candidate is `yance-ask-user-question` **0.1.5**. Keep accepted 0.1.4
 packages and acceptance evidence unchanged. The sole current host
 target is stable QwenPaw `2.2.2`, commit
 `5c56644a6e130762a236f8c946103e95a0a1eec8`, with AgentScope `2.0.10`.
-Upgrading the namespaced 0.1.3 installation retains its ID and uses
+Upgrading the namespaced 0.1.4 installation retains its ID and uses
 `--force`; earlier preview installations follow
 [the separate migration procedure](docs/naming.md). Neither changes the
-official clarification tool. This candidate still requires this round's
-automation and user desktop acceptance.
+official clarification tool. Every candidate must have validation and
+manual acceptance bound to its own source and archive hashes. Maintainer **Yance**
+has confirmed 0.1.5 Desktop acceptance after restarting. Its version
+source is maintained in this repository. See the [validation record](docs/validation/yance-ask-user-question-0.1.5.md)
+and [original screenshot gallery](docs/yance-ask-user-question-gallery.md).
+Earlier-version results do not transfer to a new artifact.
 
-The 0.1.4 scope is a Chinese default description plus a seven-language
-settings page for explicit current-Agent description sync. Preserve the
-English brand name, stable identifiers, bilingual documentation and the
-0.1.3 question/recommendation behavior. Finish old pending questions before
+The 0.1.5 changes are separate display fixes: recognize explicit
+English/Chinese recommendation suffixes, then place marked options first
+stably. Do not modify raw labels, schema, selected answers or the
+framework's model instruction. The Chinese default description and
+seven-language description-sync page remain. Finish old pending questions before
 upgrading and refresh Console afterwards. For source-launched Desktop,
 close the window, wait for the launch command to exit and restart it.
 
@@ -58,7 +63,18 @@ Check that bottom-composer messages use the host queue and that explicit
 interrupt-and-send cancels rather than answers the waiting question.
 Record Desktop separately if it was actually tested.
 
-For 0.1.4, also check Chinese default descriptions on native plugin/tool
+For 0.1.5, test the original second option `400-600/晚（推荐）`: it gets
+the recommendation style and displays before an unmarked first option,
+with no preselection and its raw label preserved in the submitted answer.
+Check paired ASCII/full-width parentheses, English `Recommended` without
+case sensitivity, Chinese `推荐`, and trailing display whitespace.
+Zero-width characters are not stripped. Check unmarked options, prose
+mentions, malformed markers and nonterminal markers receive no badge;
+both groups retain their source order. The model still receives the
+official English-marker/first-position instruction unchanged. Seven UI
+languages do not imply seven accepted marker languages.
+
+Also check Chinese default descriptions on native plugin/tool
 lists while names and IDs stay unchanged. The native lists do not gain
 automatic language switching; the plugin's own card/settings UI should
 still switch between its seven languages. Test the settings page at
@@ -77,17 +93,24 @@ reports, rather than adding unfinished pass counts to source
 documentation. User acceptance is required before commit or publication
 of this candidate.
 
+The accepted 0.1.5 runtime ZIP is kept byte-for-byte unchanged. Its
+packaged README still uses candidate wording from packing time; the
+external validation record documents the subsequent maintainer confirmation.
+Retain the original automation reports and record human acceptance
+separately. The example template remains `pending` and is not a completed
+maintainer acceptance record.
+
 Copy [the acceptance example](docs/manual-acceptance.example.json) into
 your local evidence directory and fill these fields truthfully:
 
-| Field | Meaning |
-| --- | --- |
-| `plugin_id` | The installed stable plugin ID |
-| `version` | Candidate version |
-| `archive_sha256` | SHA-256 of the exact ZIP tested |
-| `tested_by` | Person who performed the acceptance |
-| `tested_at` | ISO 8601 acceptance time |
-| `result` | `passed` only after that person accepts it |
+| Field            | Meaning                                    |
+| ---------------- | ------------------------------------------ |
+| `plugin_id`      | The installed stable plugin ID             |
+| `version`        | Candidate version                          |
+| `archive_sha256` | SHA-256 of the exact ZIP tested            |
+| `tested_by`      | Person who performed the acceptance        |
+| `tested_at`      | ISO 8601 acceptance time                   |
+| `result`         | `passed` only after that person accepts it |
 
 The supplied example has `result: pending` and cannot pass preflight.
 Automated tests, browser scripts and older-version acceptance do not
@@ -116,7 +139,16 @@ marketplace. The repository, account and real release URL must be confirmed
 before documenting download links. No such publication is performed by
 this local process, and no automatic upload workflow is currently designed.
 
+The [source repository](https://github.com/YpXstyle/qwenpaw-plugins) and
+0.1.4 source tag are already uploaded. There is no GitHub Release or
+marketplace publication. Version 0.1.5 has maintainer acceptance and its
+source is maintained in this repository. This does not establish
+marketplace publication. Prepare the actual QwenPaw fields using
+[the listing draft](docs/marketplace-listing.md), not another platform's
+submission rules. Do not manufacture ZIP download links or rewrite an
+accepted older archive to prepare a listing.
+
 Our tag convention is `<plugin-id>-v<version>`, for example
-`yance-ask-user-question-v0.1.4`. This is a collection convention,
+`yance-ask-user-question-v0.1.5`. This is a collection convention,
 not an official QwenPaw requirement. Each plugin versions and releases
 independently even though its source shares this repository.
