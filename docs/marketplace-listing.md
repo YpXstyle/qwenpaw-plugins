@@ -4,6 +4,9 @@ English | [简体中文](marketplace-listing_zh.md)
 
 ## Status
 
+Source version **0.1.6** is a local candidate awaiting its own validation and
+manual acceptance; it is not published. The marketplace release below remains **0.1.5**.
+
 [Ask User Question by Yance 0.1.5 is published in the AgentScope marketplace](https://platform.agentscope.io/plugins/yance-ask-user-question).
 The public listing reports version `0.1.5`, author **Yance** and the
 correct [source repository](https://github.com/YpXstyle/qwenpaw-plugins).

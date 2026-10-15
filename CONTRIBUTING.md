@@ -52,15 +52,12 @@ manifest email or `name_i18n` field. This collection's maintainer is
 The plain default description is Chinese. Keep the English
 brand name, stable IDs, seven-language UI and bilingual READMEs. Native
 installed-plugin/tool lists use fixed strings on the target host; do not
-claim automatic localization there. Description sync uses the plugin's
-own HTTP interface backed by the host's official
-`update_agent_config_async(agent_id, updater)` configuration API and
-requires an explicit action for the current Agent. Compare the expected
-description and update only this tool's description under the host lock,
-preserving enablement and unrelated configuration. Reject mismatched
-Agent identity, missing tools and description conflicts. Do not send a
-whole-tools PUT, reload an Agent, auto-sync every Agent or uninstall to
-sync. No idle-task or paused-heartbeat requirement is introduced.
+claim automatic localization there. Ask User Question by Yance 0.1.6 has
+no separate settings page or description-sync interface. Manage tool
+enablement in the host's Agent tools page. Preserve existing English or
+customized descriptions, switches and unrelated saved configuration;
+do not automatically overwrite them. Focused checks cover the absence
+of the removed menu, page and HTTP interface.
 
 Ask User Question by Yance keeps the framework's schema and metadata contracts.
 Recommendation display accepts only explicit English `Recommended`

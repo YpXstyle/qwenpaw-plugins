@@ -1,6 +1,6 @@
 {
   "plugin_id": "yance-ask-user-question",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "archive_sha256": "REPLACE_WITH_EXACT_TESTED_ZIP_SHA256",
   "tested_by": "REPLACE_WITH_TESTER_NAME",
   "tested_at": "REPLACE_WITH_ISO8601_DATE_TIME_WITH_TIMEZONE",

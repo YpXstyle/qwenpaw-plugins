@@ -38,12 +38,9 @@
 
 普通默认介绍使用中文，保留英文品牌名、稳定 ID、七语界面和双语 README。
 目标宿主的已安装插件/工具列表使用固定字符串，不能宣称这些页面自动国际化。
-介绍同步使用插件自己的 HTTP 接口，复用宿主官方
-`update_agent_config_async(agent_id, updater)` 配置 API，由用户针对当前 Agent 显式触发。
-在宿主锁内比较预期介绍，仅更新本工具的 description，保留开关及无关配置；
-Agent 身份不符、工具不存在或介绍冲突时拒写。
-不发送全 tools PUT，不重新加载 Agent，不自动同步所有 Agent，也不通过卸载实现同步。
-不增加任务空闲或暂停 heartbeat 的要求。
+Ask User Question by Yance 0.1.6 不再提供独立设置页或介绍同步接口，
+工具开关由宿主 Agent 工具页管理。保留已有英文或自定义介绍、开关及其他配置，
+不自动覆盖。定向检查应覆盖已移除的菜单、页面及 HTTP 接口不再可用。
 
 Ask User Question by Yance 沿用框架 schema 和 metadata 契约。
 推荐显示仅接受成对半角/全角括号中的英文 `Recommended`（忽略英文大小写）或中文 `推荐` 末尾标记。

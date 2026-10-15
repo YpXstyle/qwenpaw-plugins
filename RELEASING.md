@@ -12,11 +12,11 @@ not automatically publish them.
 Update its `plugin.json` version, frontend package version when present,
 English/Chinese READMEs and changelog together. Preserve its installation
 ID and compatible internal registrations. For the current plugin the
-candidate is `yance-ask-user-question` **0.1.5**. Keep accepted 0.1.4
-packages and acceptance evidence unchanged. The sole current host
+candidate is `yance-ask-user-question` **0.1.6**, awaiting manual acceptance
+and not published. Keep accepted 0.1.5 packages and acceptance evidence unchanged. The sole current host
 target is stable QwenPaw `2.2.2`, commit
 `5c56644a6e130762a236f8c946103e95a0a1eec8`, with AgentScope `2.0.10`.
-Upgrading the namespaced 0.1.4 installation retains its ID and uses
+Upgrading the namespaced 0.1.5 installation retains its ID and uses
 `--force`; earlier preview installations follow
 [the separate migration procedure](docs/naming.md). Neither changes the
 official clarification tool. Every candidate must have validation and
@@ -26,13 +26,14 @@ source is maintained in this repository. See the [validation record](docs/valida
 and [plugin screenshots](plugins/tool/yance-ask-user-question/README.md#screenshots).
 Earlier-version results do not transfer to a new artifact.
 
-The 0.1.5 changes are separate display fixes: recognize explicit
-English/Chinese recommendation suffixes, then place marked options first
-stably. Do not modify raw labels, schema, selected answers or the
-framework's model instruction. The Chinese default description and
-seven-language description-sync page remain. Finish old pending questions before
-upgrading and refresh Console afterwards. For source-launched Desktop,
-close the window, wait for the launch command to exit and restart it.
+The 0.1.6 candidate removes the standalone description-sync page, menu
+and dedicated HTTP interface. No extra plugin configuration remains;
+the host's Agent tools page controls enablement. Preserve existing
+English/custom descriptions, switches and other saved configuration.
+Question rendering, recommendation behavior and framework contracts stay
+unchanged. Finish pending questions before upgrading and refresh Console
+afterwards. For source-launched Desktop, close the window, wait for the
+launch command to exit and restart it.
 
 Build and validate the candidate from the repository root. Replace example
 paths with real local paths; they are not public download locations:
@@ -63,7 +64,7 @@ Check that bottom-composer messages use the host queue and that explicit
 interrupt-and-send cancels rather than answers the waiting question.
 Record Desktop separately if it was actually tested.
 
-For 0.1.5, test the original second option `400-600/晚（推荐）`: it gets
+Retain the 0.1.5 recommendation regression using the original second option `400-600/晚（推荐）`: it gets
 the recommendation style and displays before an unmarked first option,
 with no preselection and its raw label preserved in the submitted answer.
 Check paired ASCII/full-width parentheses, English `Recommended` without
@@ -74,24 +75,23 @@ both groups retain their source order. The model still receives the
 official English-marker/first-position instruction unchanged. Seven UI
 languages do not imply seven accepted marker languages.
 
-Also check Chinese default descriptions on native plugin/tool
-lists while names and IDs stay unchanged. The native lists do not gain
-automatic language switching; the plugin's own card/settings UI should
-still switch between its seven languages. Test the settings page at
-`/plugins/yance-ask-user-question` with an existing Agent: explicit sync
-must target only this plugin's description and preserve tool enablement
-and all other tools/configuration. Confirm no automatic all-Agent sync
-or uninstall occurs. Check the plugin's own description-sync HTTP
-interface: it reuses the host's official atomic configuration-update API,
-compares the expected saved description under that lock and updates only
-this tool's description. Agent mismatches, missing tools and changed
-descriptions must be refused; a failed read must not turn into a guessed
-write. Confirm there is no full-tools PUT or Agent reload, including while
-a question or heartbeat is active; no task pause is required for sync.
-Record the exact package and observed outcomes in ignored evidence
-reports, rather than adding unfinished pass counts to source
-documentation. User acceptance is required before commit or publication
-of this candidate.
+Also check Chinese default descriptions on native plugin/tool lists while
+names and IDs stay unchanged; existing English/custom descriptions must
+not be overwritten. Native lists do not gain automatic language switching;
+the question card and Details should still support seven languages.
+
+For 0.1.6, verify that the old settings menu is absent and directly opening
+`/plugins/yance-ask-user-question` does not render the removed page.
+A SPA shell may return HTTP 200; inspect route registration and content.
+Both GET and POST to `/api/yance-ask-user-question/description-sync` must
+be unavailable. Verify same-ID upgrades retain Agent tool switches,
+custom configuration and other tools, and the answer endpoint still
+resumes the waiting question. Refresh/reopen Web and Desktop pages to
+avoid testing an old loaded bundle.
+
+Record exact packages and outcomes in ignored reports, not unfinished pass
+counts in source documentation. Manual acceptance is required before commit
+or publication of this candidate.
 
 The accepted 0.1.5 runtime ZIP and tag are kept byte-for-byte unchanged.
 Its packaged README still uses candidate wording from packing time; the

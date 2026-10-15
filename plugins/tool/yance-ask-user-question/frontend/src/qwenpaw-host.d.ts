@@ -46,38 +46,9 @@ export interface QwenPawWindowNamespace {
     antdIcons: any;
     useLocale(): string;
     useTheme(): "light" | "dark";
-    useSelectedAgent(): { id: string };
     getSelectedAgentId(): string;
     getCurrentSessionId(): string | null;
     fetch(path: string, init?: RequestInit): Promise<Response>;
-  };
-  menu: {
-    add(
-      pluginId: string,
-      item: {
-        id: string;
-        location?: "primary.agentScoped" | "primary.settings" | "userMenu";
-        label: string | (() => React.ReactNode);
-        route?: string;
-      },
-    ): Disposable;
-  };
-  route: {
-    add(
-      pluginId: string,
-      route: {
-        id: string;
-        path: string;
-        component: React.ComponentType;
-        meta?: {
-          domain: "settings";
-          title: string | ((locale: string) => string);
-          scope: "agent";
-          layout: "standard";
-          navigation: "settings";
-        };
-      },
-    ): Disposable;
   };
   chat: {
     approval: {

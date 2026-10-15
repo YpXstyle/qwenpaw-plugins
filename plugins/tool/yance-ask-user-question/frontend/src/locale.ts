@@ -1,180 +1,4 @@
-const syncMessages = {
-  en: {
-    syncSettings: "Question tool settings",
-    syncCaution:
-      "Sync only this tool’s description for the selected Agent. All tool switches and configuration are preserved. The Agent is not reloaded.",
-    syncCurrent: "Current tool description",
-    syncTarget: "Chinese description to apply",
-    syncAction: "Sync Chinese description",
-    syncRefresh: "Refresh",
-    syncLoading: "Loading…",
-    syncAlready: "The Chinese description is already up to date.",
-    syncSuccess: "The Chinese description was saved and verified.",
-    syncChanged:
-      "The tool description changed. Refresh and review before trying again.",
-    syncAgentChanged:
-      "The selected Agent changed. No further requests were sent.",
-    syncMissingTool:
-      "This Agent does not have a readable configuration for this plugin tool.",
-    syncReadError:
-      "Could not read this tool’s description. No update was sent.",
-    syncWriteError:
-      "The update failed. Refresh to check the current configuration before trying again.",
-    syncVerifyError:
-      "The update could not be verified. Refresh and inspect the configuration; no automatic rollback was attempted.",
-    syncAuthError:
-      "You are not allowed to read or update this Agent. Check your sign-in and permissions.",
-  },
-  zh: {
-    syncSettings: "提问工具设置",
-    syncCaution:
-      "仅同步当前所选 Agent 的本工具简介，保留所有工具开关和配置，不重载 Agent。",
-    syncCurrent: "当前工具简介",
-    syncTarget: "将同步的中文简介",
-    syncAction: "同步中文简介",
-    syncRefresh: "刷新",
-    syncLoading: "正在读取…",
-    syncAlready: "中文简介已是最新，无需同步。",
-    syncSuccess: "中文简介已保存并复核。",
-    syncChanged: "工具简介已变化，请刷新并确认后重试。",
-    syncAgentChanged: "当前所选 Agent 已切换，已停止后续请求。",
-    syncMissingTool: "此 Agent 没有本插件工具的可读取配置。",
-    syncReadError: "无法读取本工具简介，未发送修改。",
-    syncWriteError: "更新失败，请先刷新确认当前配置后再重试。",
-    syncVerifyError:
-      "无法复核更新结果，请刷新检查配置；未自动回滚，以免覆盖其他修改。",
-    syncAuthError: "你无权读取或修改此 Agent，请检查登录状态和权限。",
-  },
-  id: {
-    syncSettings: "Pengaturan alat pertanyaan",
-    syncCaution:
-      "Sinkronkan hanya deskripsi alat ini untuk Agen yang dipilih. Semua sakelar dan konfigurasi alat dipertahankan. Agen tidak dimuat ulang.",
-    syncCurrent: "Deskripsi alat saat ini",
-    syncTarget: "Deskripsi bahasa Mandarin yang diterapkan",
-    syncAction: "Sinkronkan deskripsi Mandarin",
-    syncRefresh: "Muat ulang",
-    syncLoading: "Memuat…",
-    syncAlready: "Deskripsi Mandarin sudah terbaru.",
-    syncSuccess: "Deskripsi Mandarin disimpan dan diverifikasi.",
-    syncChanged:
-      "Deskripsi alat berubah. Muat ulang dan periksa sebelum mencoba lagi.",
-    syncAgentChanged:
-      "Agen yang dipilih berubah. Permintaan berikutnya dihentikan.",
-    syncMissingTool:
-      "Agen ini tidak memiliki konfigurasi yang dapat dibaca untuk alat plugin ini.",
-    syncReadError:
-      "Deskripsi alat ini tidak dapat dibaca. Pembaruan tidak dikirim.",
-    syncWriteError:
-      "Pembaruan gagal. Muat ulang dan periksa konfigurasi sebelum mencoba lagi.",
-    syncVerifyError:
-      "Pembaruan tidak dapat diverifikasi. Muat ulang dan periksa konfigurasi; tidak ada pemulihan otomatis.",
-    syncAuthError:
-      "Anda tidak diizinkan membaca atau memperbarui Agen ini. Periksa login dan izin.",
-  },
-  ja: {
-    syncSettings: "質問ツールの設定",
-    syncCaution:
-      "選択中のエージェントに対して本ツールの説明のみを同期します。全ツールの有効状態と設定を保持し、エージェントを再読み込みしません。",
-    syncCurrent: "現在のツール説明",
-    syncTarget: "適用する中国語の説明",
-    syncAction: "中国語の説明を同期",
-    syncRefresh: "更新",
-    syncLoading: "読み込み中…",
-    syncAlready: "中国語の説明は最新です。",
-    syncSuccess: "中国語の説明を保存し、確認しました。",
-    syncChanged: "ツールの説明が変更されました。更新して確認してください。",
-    syncAgentChanged:
-      "選択中のエージェントが変わったため、以降の要求を停止しました。",
-    syncMissingTool:
-      "このエージェントには本プラグインの読み取り可能な設定がありません。",
-    syncReadError: "本ツールの説明を読み取れません。更新は送信していません。",
-    syncWriteError:
-      "更新に失敗しました。再試行する前に現在の設定を読み直してください。",
-    syncVerifyError:
-      "更新結果を確認できません。設定を読み直してください。自動ロールバックは行っていません。",
-    syncAuthError:
-      "このエージェントを読み取り・更新する権限がありません。ログインと権限を確認してください。",
-  },
-  "pt-BR": {
-    syncSettings: "Configurações da ferramenta de perguntas",
-    syncCaution:
-      "Sincronize apenas a descrição desta ferramenta para o agente selecionado. Todas as opções e configurações das ferramentas são preservadas. O agente não é recarregado.",
-    syncCurrent: "Descrição atual da ferramenta",
-    syncTarget: "Descrição em chinês a aplicar",
-    syncAction: "Sincronizar descrição em chinês",
-    syncRefresh: "Atualizar",
-    syncLoading: "Carregando…",
-    syncAlready: "A descrição em chinês já está atualizada.",
-    syncSuccess: "A descrição em chinês foi salva e verificada.",
-    syncChanged:
-      "A descrição da ferramenta mudou. Atualize e confira antes de tentar novamente.",
-    syncAgentChanged:
-      "O agente selecionado mudou. As próximas solicitações foram interrompidas.",
-    syncMissingTool:
-      "Este agente não tem uma configuração legível para esta ferramenta do plugin.",
-    syncReadError:
-      "Não foi possível ler a descrição desta ferramenta. Nenhuma atualização foi enviada.",
-    syncWriteError:
-      "A atualização falhou. Atualize e confira a configuração antes de tentar novamente.",
-    syncVerifyError:
-      "Não foi possível verificar a atualização. Confira a configuração; nenhuma reversão automática foi feita.",
-    syncAuthError:
-      "Você não tem permissão para ler ou atualizar este agente. Confira seu login e permissões.",
-  },
-  ru: {
-    syncSettings: "Настройки инструмента вопросов",
-    syncCaution:
-      "Синхронизируется только описание этого инструмента у выбранного агента. Все переключатели и настройки инструментов сохраняются. Агент не перезагружается.",
-    syncCurrent: "Текущее описание инструмента",
-    syncTarget: "Китайское описание для применения",
-    syncAction: "Синхронизировать китайское описание",
-    syncRefresh: "Обновить",
-    syncLoading: "Загрузка…",
-    syncAlready: "Китайское описание уже актуально.",
-    syncSuccess: "Китайское описание сохранено и проверено.",
-    syncChanged: "Описание инструмента изменилось. Обновите и проверьте его.",
-    syncAgentChanged:
-      "Выбранный агент изменился. Последующие запросы остановлены.",
-    syncMissingTool:
-      "У этого агента нет доступной для чтения конфигурации инструмента плагина.",
-    syncReadError:
-      "Не удалось прочитать описание инструмента. Обновление не отправлено.",
-    syncWriteError:
-      "Обновление не удалось. Перед повтором проверьте текущую конфигурацию.",
-    syncVerifyError:
-      "Результат обновления не подтверждён. Проверьте конфигурацию; автоматический откат не выполнялся.",
-    syncAuthError:
-      "Нет прав на чтение или изменение этого агента. Проверьте вход и разрешения.",
-  },
-  vi: {
-    syncSettings: "Cài đặt công cụ câu hỏi",
-    syncCaution:
-      "Chỉ đồng bộ mô tả công cụ này cho tác nhân được chọn. Mọi công tắc và cấu hình công cụ được giữ nguyên. Tác nhân không bị tải lại.",
-    syncCurrent: "Mô tả công cụ hiện tại",
-    syncTarget: "Mô tả tiếng Trung sẽ áp dụng",
-    syncAction: "Đồng bộ mô tả tiếng Trung",
-    syncRefresh: "Làm mới",
-    syncLoading: "Đang tải…",
-    syncAlready: "Mô tả tiếng Trung đã được cập nhật.",
-    syncSuccess: "Đã lưu và kiểm tra mô tả tiếng Trung.",
-    syncChanged:
-      "Mô tả công cụ đã thay đổi. Làm mới và kiểm tra trước khi thử lại.",
-    syncAgentChanged:
-      "Tác nhân được chọn đã thay đổi. Đã dừng các yêu cầu tiếp theo.",
-    syncMissingTool:
-      "Tác nhân này không có cấu hình có thể đọc cho công cụ của tiện ích.",
-    syncReadError: "Không thể đọc mô tả công cụ này. Chưa gửi cập nhật.",
-    syncWriteError:
-      "Cập nhật thất bại. Làm mới và kiểm tra cấu hình trước khi thử lại.",
-    syncVerifyError:
-      "Chưa xác nhận được kết quả cập nhật. Hãy kiểm tra cấu hình; không tự động hoàn tác.",
-    syncAuthError:
-      "Bạn không có quyền đọc hoặc cập nhật tác nhân này. Hãy kiểm tra đăng nhập và quyền.",
-  },
-};
-
 const en = {
-  ...syncMessages.en,
   title: "Your input is needed",
   previous: "Previous question",
   next: "Next question",
@@ -213,7 +37,6 @@ type Messages = Record<MessageKey, string>;
 export const messages: Record<string, Messages> = {
   en,
   zh: {
-    ...syncMessages.zh,
     title: "需要你补充信息",
     previous: "上一题",
     next: "下一题",
@@ -243,7 +66,6 @@ export const messages: Record<string, Messages> = {
     contact: "联系邮箱",
   },
   id: {
-    ...syncMessages.id,
     title: "Masukan Anda diperlukan",
     previous: "Pertanyaan sebelumnya",
     next: "Pertanyaan berikutnya",
@@ -276,7 +98,6 @@ export const messages: Record<string, Messages> = {
     contact: "Kontak",
   },
   ja: {
-    ...syncMessages.ja,
     title: "追加情報が必要です",
     previous: "前の質問",
     next: "次の質問",
@@ -310,7 +131,6 @@ export const messages: Record<string, Messages> = {
     contact: "連絡先",
   },
   "pt-BR": {
-    ...syncMessages["pt-BR"],
     title: "Precisamos da sua resposta",
     previous: "Pergunta anterior",
     next: "Próxima pergunta",
@@ -344,7 +164,6 @@ export const messages: Record<string, Messages> = {
     contact: "Contato",
   },
   ru: {
-    ...syncMessages.ru,
     title: "Нужен ваш ответ",
     previous: "Предыдущий вопрос",
     next: "Следующий вопрос",
@@ -377,7 +196,6 @@ export const messages: Record<string, Messages> = {
     contact: "Контакт",
   },
   vi: {
-    ...syncMessages.vi,
     title: "Cần bạn cung cấp thêm thông tin",
     previous: "Câu hỏi trước",
     next: "Câu hỏi tiếp theo",

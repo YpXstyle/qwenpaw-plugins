@@ -119,7 +119,6 @@ function installTestHost() {
       },
       useLocale: vi.fn(() => "en"),
       useTheme: vi.fn(() => "light" as const),
-      useSelectedAgent: vi.fn(() => ({ id: "currently-selected-agent" })),
       getSelectedAgentId: vi.fn(() => "currently-selected-agent"),
       getCurrentSessionId: vi.fn(() => "currently-selected-session"),
       fetch: vi.fn(
@@ -127,8 +126,6 @@ function installTestHost() {
           new Response(JSON.stringify({ resolved: true }), { status: 200 }),
       ),
     },
-    menu: { add: vi.fn(() => ({ dispose: vi.fn() })) },
-    route: { add: vi.fn(() => ({ dispose: vi.fn() })) },
     chat: {
       approval: { render: vi.fn(() => ({ dispose: vi.fn() })) },
       requestPayload: { add: vi.fn(() => ({ dispose: vi.fn() })) },

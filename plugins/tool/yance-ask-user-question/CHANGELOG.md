@@ -5,6 +5,23 @@
 Each entry identifies its release state. Earlier local candidates are not
 marketplace releases. / 各条目分别标明发行状态，早期本地候选不代表市场发行。
 
+## 0.1.6 — Local candidate / 本地候选
+
+- Remove the standalone description-sync settings page, menu and dedicated
+  HTTP interface. No extra plugin configuration is required; the host's
+  Agent tools page still controls enablement.
+- Preserve English/custom descriptions, switches and other saved
+  configuration without automatic migration. Question rendering,
+  recommendation display, framework schema and answer metadata are unchanged.
+- This candidate needs its own validation and manual acceptance. Marketplace
+  version 0.1.5, its archive, tag and acceptance evidence remain unchanged.
+
+- 移除独立介绍同步设置页、菜单及专属 HTTP 接口。插件无需额外配置，
+  工具开关仍由宿主 Agent 工具页管理。
+- 保留英文/自定义介绍、工具开关及其他配置，不自动迁移。
+  问答渲染、推荐显示、框架 schema 和答案 metadata 保持不变。
+- 本候选须完成独立验证和人工验收。市场版本 0.1.5、其归档、tag 及验收证据保持不变。
+
 ## 0.1.5 — 2026-10-15 — Marketplace release / 插件市场发布
 
 [AgentScope marketplace](https://platform.agentscope.io/plugins/yance-ask-user-question) ·

@@ -5,13 +5,15 @@ English | [简体中文](README_zh.md) | [Changelog](CHANGELOG.md)
 Collect structured answers during direct Console conversations, then resume
 the same Agent turn.
 
-**Version:** 0.1.5 · **Author:** Yance · **License:** Apache-2.0
+**Source version:** 0.1.6 · **Status:** local candidate awaiting manual acceptance · **Author:** Yance · **License:** Apache-2.0
 
 Plugin ID: `yance-ask-user-question`. Tool and approval source:
 `yance_ask_user_question`. These identifiers are unchanged from 0.1.2;
 the tool is **disabled by default**. This independently maintained plugin
 is [published as 0.1.5 in the AgentScope marketplace](https://platform.agentscope.io/plugins/yance-ask-user-question).
-Maintainer **Yance** confirmed Desktop acceptance after restarting. The
+Maintainer **Yance** confirmed 0.1.5 Desktop acceptance after restarting.
+Version 0.1.6 removes the description-sync page, menu and dedicated HTTP
+interface; it is a local candidate, not published or manually accepted. The
 [source repository](https://github.com/YpXstyle/qwenpaw-plugins) includes
 the 0.1.5 source tag. No GitHub Release asset has been created.
 
@@ -34,9 +36,9 @@ the 0.1.5 source tag. No GitHub Release asset has been created.
   preview. Multiple-choice questions do not show option previews.
 - Return structured answers to the waiting tool in the same call and turn.
   Refusal, stop, timeout and missing answers do not invent a choice.
-- Show a Chinese default description on native plugin/tool lists. An
-  independent seven-language settings page lets you explicitly sync an
-  existing tool description for the current Agent, retaining its settings.
+- Show a Chinese default description on native plugin/tool lists. No extra
+  plugin configuration or separate settings page is required; enable the
+  tool in the host's Agent tools page.
 
 In this form, Other and listed options are alternatives: typing non-empty
 Other clears selected options; choosing an option clears Other. Multiple
@@ -56,7 +58,7 @@ See [Screenshots](#screenshots) for the captured Desktop states.
 
 ## Install and upgrade
 
-Install from the [AgentScope marketplace](https://platform.agentscope.io/plugins/yance-ask-user-question) or use the published
+The published stable version is still 0.1.5. Install it from the [AgentScope marketplace](https://platform.agentscope.io/plugins/yance-ask-user-question) or use the published
 0.1.5 ZIP URL with QwenPaw running:
 
 ```bash
@@ -64,11 +66,11 @@ qwenpaw plugin install "https://agentscope-platform-sg-bucket.oss-accelerate.ali
 ```
 
 The ZIP includes its built frontend. End users do not need npm, Node.js
-or a source build. For a downloaded local ZIP, upload it through plugin
-management or use a local path, for example:
+or a source build. To test the local 0.1.6 candidate, upload its validated
+ZIP through plugin management or use a real local path, for example:
 
 ```bash
-qwenpaw plugin install "/path/to/yance-ask-user-question-0.1.5.zip"
+qwenpaw plugin install "/path/to/yance-ask-user-question-0.1.6.zip"
 ```
 
 On the development-baseline CLI, a local ZIP is uploaded to the running
@@ -97,7 +99,7 @@ their pending questions, then uninstall only that old plugin:
 
 ```bash
 qwenpaw plugin uninstall ask-user-question-preview
-qwenpaw plugin install "/path/to/yance-ask-user-question-0.1.5.zip"
+qwenpaw plugin install "/path/to/yance-ask-user-question-0.1.6.zip"
 ```
 
 Refresh Console, confirm the old plugin tool is no longer available, and
@@ -107,25 +109,24 @@ form drafts and old tool configuration are not migrated. Leave the
 official `ask_user_question` tool untouched. Keep the original 0.1.1 ZIP
 and its evidence; a new ID/version/hash requires its own acceptance.
 
-### Upgrade the same ID from 0.1.4 to 0.1.5
+### Upgrade the same ID from 0.1.5 to the 0.1.6 candidate
 
-If `yance-ask-user-question` 0.1.4 is installed, use `--force` to replace it
-with 0.1.5 under the same ID:
+If `yance-ask-user-question` 0.1.5 is installed, use `--force` to replace it
+with the validated local 0.1.6 candidate under the same ID:
 
 ```bash
-qwenpaw plugin install "/path/to/yance-ask-user-question-0.1.5.zip" --force
+qwenpaw plugin install "/path/to/yance-ask-user-question-0.1.6.zip" --force
 ```
 
 Finish or decline pending questions first. Afterwards refresh Console;
 for source-launched Desktop, close the window and wait for its launch
 command to exit before restarting. Check the Agent's tool settings and
 begin a new conversation. This does not migrate unsubmitted answers.
-Keep the accepted 0.1.4 package and evidence unchanged. Later upgrades
+Keep the accepted 0.1.5 package and evidence unchanged. Later upgrades
 retaining this ID use the same command form with their actual versioned ZIP.
-An existing saved tool description does not update from the manifest
-automatically: use the explicit settings-page sync below. There is no need
-to uninstall the plugin, reinitialize QwenPaw or enable a previously
-disabled tool to sync its description.
+Existing English or customized tool descriptions, tool switches and other
+saved configuration are preserved. Upgrading does not automatically
+overwrite descriptions. Version 0.1.6 has no description-sync page or endpoint.
 See [naming and migration](../../../docs/naming.md) in the source collection.
 
 To uninstall:
@@ -281,12 +282,12 @@ switching Agent/session must not leave another conversation disabled.
 
 ## Configuration, language and authority
 
-There are no additional Python dependencies or plugin API keys. Enable
+There are no additional plugin settings, Python dependencies or plugin API keys. Enable
 the tool per Agent and keep using the host's model configuration and
 permission policy. Asking or answering does not grant permission for later
 sensitive tools.
 
-The question card, Details and plugin settings follow the host language: Simplified Chinese,
+The question card and Details follow the host language: Simplified Chinese,
 English, Russian, Japanese, Indonesian, Brazilian Portuguese and Vietnamese.
 The Agent's question text and option labels are not translated by the card.
 Details shows the localized plugin description, version, author and contact.
@@ -299,39 +300,17 @@ translation API. The targeted host's native Tools list intentionally uses
 raw plugin tool fields, so `yance_ask_user_question` and its general
 description are not dynamically translated there. The installed-plugin
 list also uses its general description on this host. The plugin's own
-question card/Details/settings support seven languages. The official CDN metadata
+question card and Details support seven languages. The official CDN metadata
 generator exports only Chinese/English; marketplace rendering uses another
 path and is not established by this local package.
 
-### Sync an existing Agent's tool description
+### Existing Agent configuration
 
-Select the intended Agent, then open the plugin's menu entry/settings
-page at **`/plugins/yance-ask-user-question`**. Review the displayed Agent
-and saved description, then use the explicit sync button to apply this
-version's Chinese description. Merely opening the page does not write
-configuration. The action targets only `yance_ask_user_question` in that
-Agent; it does not enable/disable tools, synchronize every Agent or
-uninstall/reinstall anything.
-
-The page calls this plugin's own
-**`/api/yance-ask-user-question/description-sync`** interface. GET reads
-the selected Agent ID and this tool's current/target descriptions; POST
-submits `agent_id` and `expected_description`. The backend uses the host's
-official `qwenpaw.config.config.update_agent_config_async(agent_id, updater)`
-API: under the host configuration lock, it checks the expected description
-against the latest configuration and changes only this tool's description
-to the installed plugin's target text. Tool switches, custom configuration
-and other tools remain intact. An Agent mismatch, missing tool or changed
-description is refused; reload the displayed state before retrying after
-a conflict or read failure.
-
-This is a plugin endpoint reusing the host's atomic configuration-update
-API, not an upstream description-specific HTTP endpoint. It does not send
-a complete tools PUT, reload the Agent, patch host source or write its
-configuration files directly. There
-is no requirement to stop an active question or pause heartbeat to sync
-the description. The framework model description/schema and the
-question-answer contract remain unchanged.
+Manage tool enablement in the host's Agent tools page. Version 0.1.6
+removes the standalone description-sync page and its dedicated HTTP
+interface. Existing English/custom descriptions, switches and saved
+configuration remain unchanged. The framework model description/schema
+and question-answer contract remain unchanged.
 
 Answer requests follow the host's authentication middleware and runtime
 boundary, including its local or disabled-auth policy. The Chat readiness
@@ -413,10 +392,9 @@ requests and results are not interchangeable.
 | The star disappears after selecting                | Check the fixture above and record the actual label/version; refresh/restart old frontend sessions before retesting.                                                                                          |
 | Header/actions clip in a short desktop window      | Check this version on the real host prefix and record window size, zoom and viewport; do not treat an isolated fixture as desktop acceptance.                                                                 |
 | Native Tools list shows the raw tool name          | This is the host's current plugin-tool presentation policy; use this exact ID and the plugin Details for localized explanations.                                                                              |
-| An existing tool description is still English      | Open this plugin's settings page for that Agent and explicitly sync the default description; updating the manifest does not rewrite an existing saved description.                                            |
-| Sync is disabled or refused                        | Check the selected Agent, tool existence and current description; reload after a read failure or description conflict. Do not bypass checks by uninstalling.                                                  |
-| The saved description changed before sync          | The locked comparison refuses a stale expected description; read the current value and explicitly retry.                                                                                                      |
-| The settings menu or new version is absent         | Refresh Console; for source-launched Desktop close the window, wait for its launch command to exit and restart. Confirm the installed version, then start a new conversation.                                 |
+| An existing tool description is still English      | Saved English or customized descriptions remain unchanged. Version 0.1.6 does not overwrite them and no longer offers a description-sync page or interface.                                                   |
+| The old settings page is unavailable               | This is intentional in 0.1.6. No extra plugin configuration is needed; enable the tool in the host's Agent tools page.                                                                                        |
+| The new version is absent                          | Refresh Console; for source-launched Desktop close the window, wait for the launch command to exit and restart. Confirm the installed version, then start a new conversation.                                 |
 | Bottom-composer text does not resolve the question | It is a separate message/draft and may be queued; submit structured answers in the question card.                                                                                                             |
 | Preview is absent                                  | Select a single-choice option with `preview`; previews are not shown for multiple-choice questions.                                                                                                           |
 | Submission fails                                   | Check the host login, selected Agent and expiry; the current form keeps drafts after a failed submit.                                                                                                         |

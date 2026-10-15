@@ -214,6 +214,17 @@ async def bridge(monkeypatch, tmp_path, preview_module):
                 )
 
 
+@pytest.mark.parametrize("method", ["GET", "POST"])
+async def test_description_sync_endpoint_is_removed(bridge, method):
+    response = await bridge.client.request(
+        method,
+        "/api/yance-ask-user-question/description-sync",
+        params={"agent_id": AGENT_ID},
+        json={"agent_id": AGENT_ID, "expected_description": "Previous text"},
+    )
+    assert response.status_code == 404
+
+
 def _payload(pending, answers=None, **overrides):
     payload = {
         "request_id": pending.request_id,

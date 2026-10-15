@@ -18,10 +18,9 @@ from agentscope.tool import (
     ToolChunk,
     ToolResponse,
 )
-from fastapi import APIRouter, HTTPException, Query, Request
-from pydantic import BaseModel, ConfigDict, Field, ValidationError
+from fastapi import APIRouter, HTTPException, Request
+from pydantic import Field, ValidationError
 
-from qwenpaw.app.agent_context import get_agent_for_request
 from qwenpaw.app.approvals import (
     ApprovalActor,
     ApprovalIdentityPolicy,
@@ -29,11 +28,6 @@ from qwenpaw.app.approvals import (
     get_approval_service,
 )
 from qwenpaw.constant import TOOL_GUARD_APPROVAL_TIMEOUT_SECONDS
-from qwenpaw.config.config import (
-    load_agent_config_async,
-    update_agent_config_async,
-)
-from qwenpaw.exceptions import AgentConfigConflictError
 from qwenpaw.runtime.hooks import HookBase, HookResult
 from qwenpaw.runtime.phases import Phase
 from qwenpaw.security.tool_guard.approval import ApprovalDecision
@@ -45,15 +39,6 @@ SOURCE_TYPE = "yance_ask_user_question"
 API_PREFIX = "/yance-ask-user-question"
 UI_MARKER_KEY = "yance_ask_user_question_ui"
 DEFAULT_DESCRIPTION = "在控制台对话中提出结构化问题，等待用户回答后继续同一轮任务。"
-
-
-class DescriptionSyncRequest(BaseModel):
-    """Only the selected agent and the previously displayed value are input."""
-
-    model_config = ConfigDict(extra="forbid")
-
-    agent_id: str = Field(min_length=1)
-    expected_description: str
 
 
 def _chunk(state: ToolResultState, text: str, metadata=None) -> ToolChunk:
@@ -161,7 +146,6 @@ class YanceAskUserQuestionPlugin:
         self._lock = asyncio.Lock()
         self._records: dict[str, _QuestionRecord] = {}
         self._closed = False
-        self._description = DEFAULT_DESCRIPTION
 
     @property
     def service(self):
@@ -175,7 +159,6 @@ class YanceAskUserQuestionPlugin:
         description = api.manifest.get("description")
         if not isinstance(description, str) or not description.strip():
             description = DEFAULT_DESCRIPTION
-        self._description = description
         api.register_tool(
             tool_name=TOOL_NAME,
             tool_func=yance_ask_user_question,
@@ -204,70 +187,6 @@ class YanceAskUserQuestionPlugin:
                     request_id,
                     ApprovalDecision.TIMEOUT,
                 )
-
-    @staticmethod
-    async def _description_agent_id(request: Request, agent_id: str) -> str:
-        workspace = await get_agent_for_request(request)
-        if workspace.agent_id != agent_id:
-            raise HTTPException(403, "Agent does not match the request scope")
-        return workspace.agent_id
-
-    @staticmethod
-    def _description_tool(profile):
-        tool = (
-            profile.tools.builtin_tools.get(TOOL_NAME)
-            if profile.tools is not None
-            else None
-        )
-        if tool is None:
-            raise HTTPException(404, "The plugin tool is not configured")
-        return tool
-
-    def _description_view(self, agent_id: str, current: str) -> dict:
-        return {
-            "agent_id": agent_id,
-            "current_description": current,
-            "target_description": self._description,
-        }
-
-    async def description_info(self, request: Request, agent_id: str) -> dict:
-        agent_id = await self._description_agent_id(request, agent_id)
-        try:
-            profile = await load_agent_config_async(agent_id)
-        except AgentConfigConflictError as exc:
-            raise HTTPException(
-                409,
-                "Agent configuration changed; refresh",
-            ) from exc
-        return self._description_view(
-            agent_id,
-            self._description_tool(profile).description,
-        )
-
-    async def synchronize_description(
-        self,
-        request: Request,
-        body: DescriptionSyncRequest,
-    ) -> dict:
-        agent_id = await self._description_agent_id(request, body.agent_id)
-
-        def update(profile):
-            tool = self._description_tool(profile)
-            if tool.description != body.expected_description:
-                raise HTTPException(409, "Tool description changed; refresh")
-            tool.description = self._description
-
-        try:
-            profile = await update_agent_config_async(agent_id, update)
-        except AgentConfigConflictError as exc:
-            raise HTTPException(
-                409,
-                "Agent configuration changed; refresh",
-            ) from exc
-        return self._description_view(
-            agent_id,
-            self._description_tool(profile).description,
-        )
 
     @staticmethod
     def _supported_context(ctx) -> bool:
@@ -457,20 +376,6 @@ class YanceAskUserQuestionPlugin:
 
     def build_router(self) -> APIRouter:
         router = APIRouter()
-
-        @router.get("/description-sync")
-        async def description_info(
-            request: Request,
-            agent_id: str = Query(..., min_length=1),
-        ):
-            return await self.description_info(request, agent_id)
-
-        @router.post("/description-sync")
-        async def synchronize_description(
-            request: Request,
-            body: DescriptionSyncRequest,
-        ):
-            return await self.synchronize_description(request, body)
 
         @router.post("/answer")
         async def answer(body: AnswerRequest, request: Request):

@@ -4,12 +4,13 @@
 
 在直接交互的 Console 对话中收集结构化答案，然后在同一 Agent 轮次继续执行。
 
-**版本：**0.1.5 · **作者：**Yance · **许可证：**Apache-2.0
+**源码版本：**0.1.6 · **状态：**本地候选，待人工验收 · **作者：**Yance · **许可证：**Apache-2.0
 
 插件 ID：`yance-ask-user-question`；工具名与审批来源：`yance_ask_user_question`。
 这些标识与 0.1.2 保持一致，工具**默认禁用**。
 本插件由个人独立维护，[AgentScope 插件市场已发布 0.1.5](https://platform.agentscope.io/plugins/yance-ask-user-question)。
-维护者 **Yance** 重启后已确认桌面验收，[源码仓库](https://github.com/YpXstyle/qwenpaw-plugins)
+维护者 **Yance** 重启后已确认 0.1.5 桌面验收。0.1.6 移除介绍同步页面、菜单和专属 HTTP 接口，
+尚未发布或完成人工验收。[源码仓库](https://github.com/YpXstyle/qwenpaw-plugins)
 包含 0.1.5 源码 tag。目前未创建 GitHub Release 资产。
 
 ## 功能
@@ -22,7 +23,7 @@
   不自动预选、不新增 `recommended` 字段，也不从说明或位置猜测推荐。
 - 显示问题背景和当前选中单选选项的 `preview`，多选题不显示选项预览。
 - 阻塞中的工具在同一调用、同一轮取得结构化答案；拒答、停止、超时或缺少答案均不会生成默认选择。
-- 原生插件/工具列表默认使用中文介绍；独立七语设置页可显式同步当前 Agent 的已有工具介绍，保留其设置。
+- 原生插件/工具列表默认使用中文介绍；无需额外插件配置或独立设置页，在宿主 Agent 工具页启用即可。
 
 表单中的“其他”与已有选项互斥：输入非空自由文本会清空已选项，选择选项会清空自由文本。
 多选题仍可同时选择多个已有选项。
@@ -36,7 +37,7 @@
 
 ## 安装与升级
 
-优先通过 [AgentScope 插件市场](https://platform.agentscope.io/plugins/yance-ask-user-question)安装，或在 QwenPaw 运行时使用
+当前已发布的稳定版仍为 0.1.5，可通过 [AgentScope 插件市场](https://platform.agentscope.io/plugins/yance-ask-user-question)安装，或在 QwenPaw 运行时使用
 已发布的 0.1.5 ZIP 地址：
 
 ```bash
@@ -44,10 +45,10 @@ qwenpaw plugin install "https://agentscope-platform-sg-bucket.oss-accelerate.ali
 ```
 
 ZIP 已含前端构建产物，使用者无需 npm、Node.js 或源码构建。
-已下载的本地 ZIP 也可通过插件管理上传，或使用示例本地路径：
+测试本地 0.1.6 候选时，可通过插件管理上传已验证 ZIP，或使用真实本地路径，例如：
 
 ```bash
-qwenpaw plugin install "/path/to/yance-ask-user-question-0.1.5.zip"
+qwenpaw plugin install "/path/to/yance-ask-user-question-0.1.6.zip"
 ```
 
 开发基线中的 CLI 会把本地 ZIP 上传给运行中服务的 API。
@@ -70,7 +71,7 @@ qwenpaw plugin install "/path/to/unpacked/yance-ask-user-question"
 
 ```bash
 qwenpaw plugin uninstall ask-user-question-preview
-qwenpaw plugin install "/path/to/yance-ask-user-question-0.1.5.zip"
+qwenpaw plugin install "/path/to/yance-ask-user-question-0.1.6.zip"
 ```
 
 刷新 Console，确认旧插件工具已不再可用，在目标 Agent 中明确启用
@@ -78,20 +79,20 @@ qwenpaw plugin install "/path/to/yance-ask-user-question-0.1.5.zip"
 待答、草稿和旧工具配置均不自动迁移。不要修改官方 `ask_user_question` 工具。
 保留原 0.1.1 ZIP 和证据，新 ID/版本/哈希需要自己的验收。
 
-### 相同 ID 从 0.1.4 升级到 0.1.5
+### 相同 ID 从 0.1.5 升级到 0.1.6 候选
 
-已经安装 `yance-ask-user-question` 0.1.4 时，使用 `--force`
-替换为相同 ID 的 0.1.5：
+已经安装 `yance-ask-user-question` 0.1.5 时，使用 `--force`
+替换为相同 ID、已完成自动验证的本地 0.1.6 候选：
 
 ```bash
-qwenpaw plugin install "/path/to/yance-ask-user-question-0.1.5.zip" --force
+qwenpaw plugin install "/path/to/yance-ask-user-question-0.1.6.zip" --force
 ```
 
 先完成或拒绝待答，之后刷新 Console；源码启动的桌面版先关闭窗口，
 等启动命令退出后再启动。检查 Agent 工具设置并开始新对话，未提交答案不迁移。
-已验收 0.1.4 安装包和证据保持不变，之后仍保留该 ID 的升级采用同一命令形式，并替换为实际版本 ZIP。
-已有工具介绍不会随清单自动更新，请使用下方设置页显式同步。
-同步介绍无需卸载插件、重新初始化 QwenPaw，或启用原本关闭的工具。
+已验收 0.1.5 安装包和证据保持不变，之后仍保留该 ID 的升级采用同一命令形式，并替换为实际版本 ZIP。
+已有英文或自定义介绍、工具开关及其他已保存配置保持原样，不自动覆盖介绍。
+0.1.6 不再提供介绍同步页面或接口。
 源码集合中的[命名与迁移说明](../../../docs/naming_zh.md)提供详细解释。
 
 卸载命令：
@@ -216,11 +217,11 @@ Agent 获得答案后继续当前轮次，你也可以拒绝回答。
 
 ## 配置、语言与权限
 
-插件无需额外 Python 依赖或专用 API Key。
+插件无需额外配置、Python 依赖或专用 API Key。
 按 Agent 启用工具，继续使用宿主既有模型配置及权限策略。
 提问或回答不会授权后续敏感工具操作。
 
-问答卡、“详细信息”和插件设置跟随宿主语言，覆盖简体中文、英语、俄语、日语、印尼语、巴西葡萄牙语和越南语。
+问答卡和“详细信息”跟随宿主语言，覆盖简体中文、英语、俄语、日语、印尼语、巴西葡萄牙语和越南语。
 卡片不会翻译模型生成的问题或选项。详情提供本地化简介、版本、作者和联系方式；
 展示名始终为 **Ask User Question by Yance**。
 
@@ -228,26 +229,14 @@ Agent 获得答案后继续当前轮次，你也可以拒绝回答。
 清单 `description_i18n` 是插件简介元数据，不是工具名翻译 API。
 目标宿主的原生工具列表有意使用插件的 raw 字段，`yance_ask_user_question`
 和通用说明不会在那里动态翻译；该宿主的已安装插件列表也使用通用简介。
-插件自己的问答卡、详情和设置可切换七语。官方 CDN 元数据生成器仅输出中英说明，
+插件自己的问答卡和详情可切换七语。官方 CDN 元数据生成器仅输出中英说明，
 市场另有本地化链路，本地包不证明市场页面的显示行为。
 
-### 同步已有 Agent 的工具介绍
+### 已有 Agent 配置
 
-先选择目标 Agent，通过插件菜单打开 **`/plugins/yance-ask-user-question`** 设置页，
-核对当前 Agent 和已保存的介绍，再显式点击同步按钮，应用本版本的中文介绍。
-仅打开页面不会写配置；操作只针对该 Agent 的 `yance_ask_user_question`，
-不切换工具开关、不自动同步全部 Agent，也不卸载或重新安装插件。
-
-页面调用本插件自己的 **`/api/yance-ask-user-question/description-sync`** 接口。
-GET 读取当前 Agent ID 及本工具当前/目标介绍；POST 提交 `agent_id` 和 `expected_description`。
-后端复用宿主官方 `qwenpaw.config.config.update_agent_config_async(agent_id, updater)` API，
-在宿主配置锁内对照最新配置检查预期介绍，只将本工具 description 更新为已安装插件的目标文本，
-保留工具开关、自定义配置及其他工具。Agent 身份不符、工具不存在或介绍已变化时拒写；
-冲突或读取失败后先重新加载显示状态，再显式重试。
-
-这是插件接口复用宿主原子配置更新 API，不是上游已有的专用介绍 HTTP 接口。
-它不发送完整 tools PUT，不重新加载 Agent，也不直接修改宿主源码或配置文件。
-同步介绍无需停止当前提问或暂停 heartbeat；框架提供给模型的说明/schema 及问答契约保持不变。
+工具开关由宿主 Agent 工具页管理。0.1.6 移除独立介绍同步页面及专属 HTTP 接口。
+已有英文/自定义介绍、工具开关及其他已保存配置保持原样，不自动覆盖介绍。
+框架提供给模型的说明/schema 及问答契约保持不变。
 
 回答请求沿用宿主认证中间件及运行时边界，也沿用宿主本地或关闭认证时的访问策略。
 Chat 的 `yance_ask_user_question_ui: "1"` 是界面就绪提示，
@@ -311,10 +300,9 @@ mail monitor、其他无界面/无人值守入口、Inbox 和重启持久恢复�
 | 选中后星标消失             | 按上述夹具核验并记录实际标签和版本；重测前刷新或重启旧前端。                                                                   |
 | 较矮桌面窗口遮住标题/操作  | 在真实宿主前缀下核验本版本并记录窗口大小、缩放和视口；隔离夹具不代替桌面验收。                                                 |
 | 原生工具列表显示原始工具名 | 这是当前宿主对插件工具的展示策略；使用该精确 ID，通过插件详情阅读本地化说明。                                                  |
-| 已有工具介绍仍为英文       | 在插件设置页针对该 Agent 显式同步默认介绍；修改清单不会覆盖已有保存值。                                                        |
-| 同步不可用或被拒绝         | 核对当前 Agent、工具是否存在及当前介绍；读取失败或介绍冲突后重新加载，不通过卸载绕过检查。                                     |
-| 同步前介绍已被修改         | 锁内比较会拒绝过期预期值；读取当前值后再显式重试。                                                                             |
-| 看不到设置菜单或新版本     | 刷新 Console；源码启动的桌面版先关闭窗口，等启动命令退出再启动，确认安装版本后开始新对话。                                     |
+| 已有工具介绍仍为英文       | 已保存的英文或自定义介绍保持原样；0.1.6 不会覆盖它们，也不再提供专属同步页面及接口。                                           |
+| 旧设置页面无法使用         | 这是 0.1.6 的预期行为。插件无需额外配置，请在宿主 Agent 工具页启用工具。                                                       |
+| 看不到新版本               | 刷新 Console；源码启动的桌面版先关闭窗口，等启动命令退出再启动，确认安装版本后开始新对话。                                     |
 | 底部输入文字未解决待答     | 这是独立消息/草稿，可能进入队列；请在问答卡提交结构化答案。                                                                    |
 | 没有选项预览               | 先选择带 `preview` 的单选选项，多选题不显示预览。                                                                              |
 | 提交失败                   | 检查宿主登录、当前 Agent 和有效期；当前表单会在提交失败后保留草稿。                                                            |
