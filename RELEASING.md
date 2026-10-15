@@ -13,7 +13,7 @@ Update its `plugin.json` version, frontend package version when present,
 English/Chinese READMEs and changelog together. Preserve its installation
 ID and compatible internal registrations. For the current plugin the
 version is `yance-ask-user-question` **0.1.6**, manually accepted by Yance
-with marketplace materials prepared, but not marketplace-published. See its
+and [published in the AgentScope marketplace](https://platform.agentscope.io/plugins/yance-ask-user-question). See its
 [validation and acceptance record](docs/validation/yance-ask-user-question-0.1.6.md).
 Keep accepted 0.1.5 packages and acceptance evidence unchanged. The sole current host
 target is stable QwenPaw `2.2.2`, commit
@@ -156,10 +156,18 @@ marketplace. The repository, account and real release URL must be confirmed
 before documenting download links. No such publication is performed by
 this local process, and no automatic upload workflow is currently designed.
 
-The [source repository](https://github.com/YpXstyle/qwenpaw-plugins) and
-0.1.5 source tag are uploaded. [Marketplace version 0.1.5 is published](https://platform.agentscope.io/plugins/yance-ask-user-question)
+Current [marketplace version 0.1.6](https://platform.agentscope.io/plugins/yance-ask-user-question) is `published`.
+Its [public installation ZIP](https://agentscope-platform-sg-bucket.oss-accelerate.aliyuncs.com/plugin-platform/yance-ask-user-question/0.1.6/yance-ask-user-question-0.1.6.zip)
+has different archive bytes from the accepted local ZIP, but the eight
+non-directory files match exactly; one additional directory entry is present.
+Keep both archives and hashes separate in the
+[0.1.6 record](docs/validation/yance-ask-user-question-0.1.6.md).
+No GitHub Release asset has been created.
+
+Historically, the [source repository](https://github.com/YpXstyle/qwenpaw-plugins) and
+0.1.5 source tag were uploaded. [Marketplace version 0.1.5 was published](https://platform.agentscope.io/plugins/yance-ask-user-question)
 and has a real downloadable package; no GitHub Release asset has been created. Version 0.1.5 has maintainer Desktop acceptance. The public
-marketplace ZIP has different archive bytes but identical eight member
+0.1.5 marketplace ZIP has different archive bytes but identical eight member
 paths/content to the accepted local ZIP; both hashes are recorded in
 [the listing materials](docs/marketplace-listing.md). This published status
 is not a separately verified security-scan result. Use QwenPaw's actual

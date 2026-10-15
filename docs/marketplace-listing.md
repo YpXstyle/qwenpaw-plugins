@@ -5,25 +5,32 @@ English | [简体中文](marketplace-listing_zh.md)
 ## Status
 
 Maintainer **Yance** manually accepted source version **0.1.6**, confirming
-removal of the extra page and normal questions and recommendations. Its
-marketplace materials are prepared, but it is not published. See the
+removal of the extra page and normal questions and recommendations.
+Version **0.1.6** is [published in the AgentScope marketplace](https://platform.agentscope.io/plugins/yance-ask-user-question). See the
 [0.1.6 validation and acceptance record](validation/yance-ask-user-question-0.1.6.md).
-The marketplace release below remains **0.1.5**.
+The public API reports `version_label: 0.1.6` and `status: published`.
+The [public 0.1.6 ZIP](https://agentscope-platform-sg-bucket.oss-accelerate.aliyuncs.com/plugin-platform/yance-ask-user-question/0.1.6/yance-ask-user-question-0.1.6.zip)
+is 44,939 bytes, SHA-256 `b4fe1848d0563cd6c850d68e975103db76ba2632bd87184cc4771506560db10f`.
+Its eight non-directory files match the accepted local ZIP; it contains one
+additional directory entry. Archive hashes remain separate.
 
 Use the accepted 0.1.6 ZIP bound to source commit
 [`e1635aa`](https://github.com/YpXstyle/qwenpaw-plugins/commit/e1635aab12c028da2d8f0d1cc90a2f9557d0ef5d)
-for a later submission. Its packaged candidate wording reflects packing time;
-later source README/changelog acceptance updates do not rewrite that ZIP.
+as the immutable acceptance reference. Its packaged candidate wording reflects
+packing time; later source README/changelog publication updates do not rewrite
+that ZIP.
+
+### Historical 0.1.5 release
 
 [Ask User Question by Yance 0.1.5 is published in the AgentScope marketplace](https://platform.agentscope.io/plugins/yance-ask-user-question).
-The public listing reports version `0.1.5`, author **Yance** and the
+The 0.1.5 listing record reports version `0.1.5`, author **Yance** and the
 correct [source repository](https://github.com/YpXstyle/qwenpaw-plugins).
 The source and [0.1.5 tag](https://github.com/YpXstyle/qwenpaw-plugins/tree/yance-ask-user-question-v0.1.5)
 are uploaded. No GitHub Release asset has been created.
 Maintainer **Yance** confirmed 0.1.5 Desktop acceptance after restarting.
 This published status does not establish a separately verified security-scan result.
 
-The public ZIP is linked in the table below. Its archive bytes differ
+The historical [0.1.5 public ZIP](https://agentscope-platform-sg-bucket.oss-accelerate.aliyuncs.com/plugin-platform/yance-ask-user-question/0.1.5/yance-ask-user-question-0.1.5.zip) remains available. Its archive bytes differ
 from the accepted local ZIP (DEFLATE versus STORED), but all eight member
 paths and contents were verified identical. The [validation record](validation/yance-ask-user-question-0.1.5.md)
 keeps both SHA-256 values and the evidence separate.
@@ -40,20 +47,20 @@ Prepare these QwenPaw-specific fields. The publishing form checked on
 2026-10-15 confirms the 10 MiB ZIP limit; follow current form and server
 validation for other limits.
 
-| Field                    | Value or action                                                                                                                                                                                                                                                                                                                                                 |
-| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Package                  | One plugin ZIP, at most 10 MiB. Prepare the exact accepted 0.1.6 ZIP in its [validation record](validation/yance-ask-user-question-0.1.6.md); the published [0.1.5 ZIP](https://agentscope-platform-sg-bucket.oss-accelerate.aliyuncs.com/plugin-platform/yance-ask-user-question/0.1.5/yance-ask-user-question-0.1.5.zip) remains the current public download. |
-| Name                     | Ask User Question by Yance                                                                                                                                                                                                                                                                                                                                      |
-| Plugin ID / version      | `yance-ask-user-question` / `0.1.6`; confirm values parsed from the final package                                                                                                                                                                                                                                                                               |
-| Type                     | Manifest `tool`; confirm/select the matching plugin type offered by the platform                                                                                                                                                                                                                                                                                |
-| Author                   | Yance; contact `xstyle@qq.com` is documented in the README, not an invented manifest email field                                                                                                                                                                                                                                                                |
-| Backend / frontend entry | `backend/plugin.py` / `frontend/dist/index.js`                                                                                                                                                                                                                                                                                                                  |
-| Dependencies             | None added; use host-provided AgentScope `2.0.10`                                                                                                                                                                                                                                                                                                               |
-| Host compatibility       | Declared minimum `2.2.2`; evidence target `2.2.2 / 5c56644a6e130762a236f8c946103e95a0a1eec8`, not every admitted version                                                                                                                                                                                                                                        |
-| Description              | Use the draft below and check current form/server validation before submission                                                                                                                                                                                                                                                                                  |
-| Source repository        | `https://github.com/YpXstyle/qwenpaw-plugins`; version source is maintained here, separate from marketplace publication                                                                                                                                                                                                                                         |
-| Changelog                | Use the 0.1.6 changelog draft below: remove the extra settings page/menu/API; preserve the question and recommendation contracts                                                                                                                                                                                                                                |
-| Rights / license         | Confirm publication rights and Apache-2.0 agreement when authorized to proceed                                                                                                                                                                                                                                                                                  |
+| Field                    | Value or action                                                                                                                                                                                                                                                                                                                                                |
+| ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Package                  | One plugin ZIP, at most 10 MiB. The current [published 0.1.6 ZIP](https://agentscope-platform-sg-bucket.oss-accelerate.aliyuncs.com/plugin-platform/yance-ask-user-question/0.1.6/yance-ask-user-question-0.1.6.zip) is available; keep its hash distinct from the accepted local ZIP in the [validation record](validation/yance-ask-user-question-0.1.6.md). |
+| Name                     | Ask User Question by Yance                                                                                                                                                                                                                                                                                                                                     |
+| Plugin ID / version      | `yance-ask-user-question` / `0.1.6`; confirm values parsed from the final package                                                                                                                                                                                                                                                                              |
+| Type                     | Manifest `tool`; confirm/select the matching plugin type offered by the platform                                                                                                                                                                                                                                                                               |
+| Author                   | Yance; contact `xstyle@qq.com` is documented in the README, not an invented manifest email field                                                                                                                                                                                                                                                               |
+| Backend / frontend entry | `backend/plugin.py` / `frontend/dist/index.js`                                                                                                                                                                                                                                                                                                                 |
+| Dependencies             | None added; use host-provided AgentScope `2.0.10`                                                                                                                                                                                                                                                                                                              |
+| Host compatibility       | Declared minimum `2.2.2`; evidence target `2.2.2 / 5c56644a6e130762a236f8c946103e95a0a1eec8`, not every admitted version                                                                                                                                                                                                                                       |
+| Description              | Use the draft below and check current form/server validation before submission                                                                                                                                                                                                                                                                                 |
+| Source repository        | `https://github.com/YpXstyle/qwenpaw-plugins`; version source is maintained here, separate from marketplace publication                                                                                                                                                                                                                                        |
+| Changelog                | Use the 0.1.6 changelog draft below: remove the extra settings page/menu/API; preserve the question and recommendation contracts                                                                                                                                                                                                                               |
+| Rights / license         | Confirm publication rights and Apache-2.0 agreement when authorized to proceed                                                                                                                                                                                                                                                                                 |
 
 Name, version, author, entries, dependencies and compatibility are extracted from the package.
 The current form requires package parsing, plugin type and the rights agreement before proceeding.
@@ -97,7 +104,7 @@ field; such material is optional, not another platform's gate.
 After exact-ZIP validation and maintainer acceptance, follow [local release preflight](../RELEASING.md).
 Publish source/tag/release assets only as explicitly authorized, then use the real URLs.
 On the [official publishing page](https://platform.agentscope.io/plugins/publish), parse the package, review fields, confirm rights, save a draft and preview it.
-Submit security scanning only when publication is authorized. The publishing page describes scanning before a new submission becomes publicly installable; the status of the already published 0.1.5 listing is recorded separately above.
+Submit security scanning only when publication is authorized. The publishing page describes scanning before a new submission becomes publicly installable; the verified 0.1.6 publication and historical 0.1.5 release are recorded separately above.
 Successful local tests or a source tag do not establish scan approval or marketplace publication.
 
 References: [official plugin documentation](https://github.com/agentscope-ai/QwenPaw/blob/5c56644a6e130762a236f8c946103e95a0a1eec8/website/public/docs/plugins.en.md),

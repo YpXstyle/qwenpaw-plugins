@@ -89,11 +89,26 @@ manually accepted artifact. Later CI archives are separate build evidence.
 
 ## Marketplace status
 
-The official public detail and versions APIs checked on 2026-10-15 reported
-version **0.1.5** as **`published`** at the existing
+The official public APIs checked on 2026-10-15 report version label
+**0.1.6** with status **`published`** at the existing
 [marketplace entry](https://platform.agentscope.io/plugins/yance-ask-user-question).
-Version **0.1.6** has manual acceptance and local publication materials ready;
-no 0.1.6 marketplace upload, scan, submission or publication is recorded here.
+The API's `published_at` value is `2026-10-15T23:24:00.312917`
+(no timezone offset is supplied in that value).
+
+| Marketplace artifact  | Verified value                                                                                                                                                                         |
+| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Public package        | [yance-ask-user-question-0.1.6.zip](https://agentscope-platform-sg-bucket.oss-accelerate.aliyuncs.com/plugin-platform/yance-ask-user-question/0.1.6/yance-ask-user-question-0.1.6.zip) |
+| ZIP size              | 44,939 bytes                                                                                                                                                                           |
+| ZIP SHA-256           | `b4fe1848d0563cd6c850d68e975103db76ba2632bd87184cc4771506560db10f`                                                                                                                     |
+| Non-directory members | Eight paths and their extracted bytes match the accepted ZIP above                                                                                                                     |
+| Additional entry      | One directory entry; it adds no runtime file                                                                                                                                           |
+
+The market archive and accepted local archive have different container bytes
+and SHA-256 values. The original 127,683-byte accepted ZIP remains unchanged;
+the public ZIP does not replace that manual-acceptance record. All eight
+published non-directory files match the frozen package, including its
+packing-time documentation. Later source documentation does not change either
+archive. Published status is not a separately verified security-scan result.
 The plugin name, plugin/tool identifiers, author and existing marketplace URL
 remain unchanged. The six screenshots in the
 [plugin README](../../plugins/tool/yance-ask-user-question/README.md#screenshots)
@@ -120,5 +135,13 @@ remain explicitly identified as 0.1.5 examples.
 不覆盖**；包内说明保留构建时的候选状态，后续源码 README、更新日志和本记录补充
 验收结果。发布预检对应冻结提交，后续文档提交和 CI 新构建的包不冒充原人工验收包。
 
-市场公开接口当前仍确认 **0.1.5 已发布**；**0.1.6 已验收、已准备发布材料，尚未在
-市场发布**。历史 0.1.5 安装包、记录和六张示例图保留，名称、标识及作者信息不变。
+市场公开接口已确认 **0.1.6 已发布**，`version_label` 为 `0.1.6`，状态为 `published`。
+`published_at` 原始值为 `2026-10-15T23:24:00.312917`（该值未提供时区偏移）。
+[公开安装 ZIP](https://agentscope-platform-sg-bucket.oss-accelerate.aliyuncs.com/plugin-platform/yance-ask-user-question/0.1.6/yance-ask-user-question-0.1.6.zip)
+为 **44,939 字节**，SHA-256 为
+`b4fe1848d0563cd6c850d68e975103db76ba2632bd87184cc4771506560db10f`。
+它与已验收本地 ZIP 的归档字节不同，但八个非目录成员的路径和解压字节完全相同，
+另多一个不增加运行文件的目录条目。原 **127,683 字节**人工验收 ZIP 及其哈希不变，
+两份归档和证据分别保留；源码文档后续更新不改写任一归档。
+已发布状态不代表已独立核验安全扫描结果。历史 0.1.5 安装包、记录和六张示例图保留，
+名称、标识及作者信息不变。

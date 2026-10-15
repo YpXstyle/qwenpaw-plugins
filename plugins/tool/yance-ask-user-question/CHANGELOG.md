@@ -5,8 +5,9 @@
 Each entry identifies its release state. Earlier local candidates are not
 marketplace releases. / 各条目分别标明发行状态，早期本地候选不代表市场发行。
 
-## 0.1.6 — Maintainer accepted, not marketplace-published / 已验收，未市场发布
+## 0.1.6 — 2026-10-15 — Marketplace release / 插件市场发布
 
+[AgentScope marketplace / 插件市场](https://platform.agentscope.io/plugins/yance-ask-user-question) ·
 [Validation and acceptance / 验证与验收](../../../docs/validation/yance-ask-user-question-0.1.6.md)
 
 - Remove the standalone description-sync settings page, menu and dedicated
@@ -16,8 +17,9 @@ marketplace releases. / 各条目分别标明发行状态，早期本地候选�
   configuration without automatic migration. Question rendering,
   recommendation display, framework schema and answer metadata are unchanged.
 - Maintainer Yance accepted the exact 0.1.6 ZIP: the extra page is gone and
-  questions and recommendations work normally. Marketplace materials are
-  prepared, but 0.1.6 is not published. The accepted ZIP is frozen against
+  questions and recommendations work normally. Version 0.1.6 is published
+  in the AgentScope marketplace; its eight non-directory package files
+  match the accepted ZIP. The accepted ZIP is frozen against
   source commit `e1635aab12c028da2d8f0d1cc90a2f9557d0ef5d`; later
   documentation-only acceptance updates do not rewrite it. Marketplace
   version 0.1.5, its archive, tag and acceptance evidence remain unchanged.
@@ -27,7 +29,8 @@ marketplace releases. / 各条目分别标明发行状态，早期本地候选�
 - 保留英文/自定义介绍、工具开关及其他配置，不自动迁移。
   问答渲染、推荐显示、框架 schema 和答案 metadata 保持不变。
 - 维护者 Yance 已验收精确 0.1.6 ZIP，确认额外页面消失、问答和推荐正常。
-  市场材料已准备，0.1.6 尚未发布。已验收 ZIP 绑定冻结源码提交
+  0.1.6 已在 AgentScope 插件市场发布，市场包八个非目录文件与已验收 ZIP 一致。
+  已验收 ZIP 绑定冻结源码提交
   `e1635aab12c028da2d8f0d1cc90a2f9557d0ef5d`，之后仅文档的验收状态更新不改写它。
   市场版本 0.1.5、其归档、tag 及验收证据保持不变。
 

@@ -9,8 +9,8 @@ CI 可以验证并保留产物，不自动发布。
 ## 1. 冻结单个插件候选
 
 同步更新 `plugin.json` 版本、已有前端的包版本、中英文 README 和变更记录，
-保留安装 ID 及兼容的内部注册。目前候选为
-`yance-ask-user-question` **0.1.6**，已由 Yance 人工验收，市场材料已准备但尚未市场发布，
+保留安装 ID 及兼容的内部注册。当前版本为
+`yance-ask-user-question` **0.1.6**，已由 Yance 人工验收，且已在[AgentScope 插件市场](https://platform.agentscope.io/plugins/yance-ask-user-question)发布，
 见[验证与验收记录](docs/validation/yance-ask-user-question-0.1.6.md)。
 已验收 0.1.5 安装包及证据保持原样。
 当前唯一宿主目标为正式版 QwenPaw `2.2.2`，提交
@@ -115,9 +115,15 @@ python scripts/release_preflight.py --plugin yance-ask-user-question --validatio
 先确认仓库、账号和真实发行地址，再写下载链接。
 本地流程不执行这些发布动作，目前也不设计自动上传工作流。
 
-[源码仓库](https://github.com/YpXstyle/qwenpaw-plugins)及 0.1.5 源码 tag 已上传，
+当前[市场版本 0.1.6](https://platform.agentscope.io/plugins/yance-ask-user-question)状态为 `published`，
+[公开安装 ZIP](https://agentscope-platform-sg-bucket.oss-accelerate.aliyuncs.com/plugin-platform/yance-ask-user-question/0.1.6/yance-ask-user-question-0.1.6.zip)
+与已验收本地 ZIP 的归档字节不同，但八个非目录文件完全一致，另多一个目录条目。
+两份归档及哈希分别保留于[0.1.6 记录](docs/validation/yance-ask-user-question-0.1.6.md)。
+目前未创建 GitHub Release 资产。
+
+历史版本的[源码仓库](https://github.com/YpXstyle/qwenpaw-plugins)及 0.1.5 源码 tag 已上传，
 [市场 0.1.5 已发布](https://platform.agentscope.io/plugins/yance-ask-user-question)并提供真实安装包，尚未创建 GitHub Release 资产。
-0.1.5 已通过维护者桌面验收。市场 ZIP 与已验收本地 ZIP 的归档字节不同，
+0.1.5 已通过维护者桌面验收。该版本市场 ZIP 与已验收本地 ZIP 的归档字节不同，
 八个成员路径和文件内容相同，两份哈希记录于[市场发布材料](docs/marketplace-listing_zh.md)。
 已发布状态不代表已独立核验安全扫描结果。使用实际 QwenPaw 字段，不套用其他平台规则，
 也不为准备材料改写已验收归档。

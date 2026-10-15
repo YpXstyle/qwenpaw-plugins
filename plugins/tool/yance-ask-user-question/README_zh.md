@@ -4,15 +4,15 @@
 
 在直接交互的 Console 对话中收集结构化答案，然后在同一 Agent 轮次继续执行。
 
-**源码版本：**0.1.6 · **状态：**Yance 已人工验收，尚未市场发布 · **作者：**Yance · **许可证：**Apache-2.0
+**源码版本：**0.1.6 · **状态：**Yance 已人工验收，已市场发布 · **作者：**Yance · **许可证：**Apache-2.0
 
 插件 ID：`yance-ask-user-question`；工具名与审批来源：`yance_ask_user_question`。
 这些标识与 0.1.2 保持一致，工具**默认禁用**。
-本插件由个人独立维护，[AgentScope 插件市场已发布 0.1.5](https://platform.agentscope.io/plugins/yance-ask-user-question)。
+本插件由个人独立维护，[AgentScope 插件市场已发布 0.1.6](https://platform.agentscope.io/plugins/yance-ask-user-question)。
 维护者 **Yance** 已验收 0.1.6，确认额外页面消失、问答和推荐功能正常。
 0.1.6 移除介绍同步页面、菜单和专属 HTTP 接口，见
 [0.1.6 验证与验收记录](../../../docs/validation/yance-ask-user-question-0.1.6.md)。
-市场材料已准备，0.1.6 尚未发布。[源码仓库](https://github.com/YpXstyle/qwenpaw-plugins)
+官方市场已确认 0.1.6 状态为 `published`。[源码仓库](https://github.com/YpXstyle/qwenpaw-plugins)
 包含 0.1.5 源码 tag。目前未创建 GitHub Release 资产。
 
 已验收的 0.1.6 ZIP 绑定冻结源码提交
@@ -20,6 +20,7 @@
 包内候选字样属于打包时点文字。当前源码 README 和变更记录补充了之后的验收状态，
 因此其字节与 ZIP 内文档成员不同。发行应使用验证记录中的已验收 ZIP，
 不要覆盖它，也不要把本次文档修订重新打包后当作同一已验收产物。
+市场归档字节不同，但八个非目录文件与已验收 ZIP 一致，两份哈希分别保存在验证记录中。
 
 ## 功能
 
@@ -45,15 +46,15 @@
 
 ## 安装与升级
 
-当前已发布的稳定版仍为 0.1.5，可通过 [AgentScope 插件市场](https://platform.agentscope.io/plugins/yance-ask-user-question)安装，或在 QwenPaw 运行时使用
-已发布的 0.1.5 ZIP 地址：
+当前已发布的稳定版为 0.1.6，可通过 [AgentScope 插件市场](https://platform.agentscope.io/plugins/yance-ask-user-question)安装，或在 QwenPaw 运行时使用
+已发布的 0.1.6 ZIP 地址：
 
 ```bash
-qwenpaw plugin install "https://agentscope-platform-sg-bucket.oss-accelerate.aliyuncs.com/plugin-platform/yance-ask-user-question/0.1.5/yance-ask-user-question-0.1.5.zip"
+qwenpaw plugin install "https://agentscope-platform-sg-bucket.oss-accelerate.aliyuncs.com/plugin-platform/yance-ask-user-question/0.1.6/yance-ask-user-question-0.1.6.zip"
 ```
 
 ZIP 已含前端构建产物，使用者无需 npm、Node.js 或源码构建。
-安装已验收的本地 0.1.6 ZIP 时，可通过插件管理上传该精确归档，或使用真实本地路径，例如：
+也可安装已验收的本地 0.1.6 ZIP，通过插件管理上传该精确归档，或使用真实本地路径，例如：
 
 ```bash
 qwenpaw plugin install "/path/to/yance-ask-user-question-0.1.6.zip"
@@ -90,10 +91,10 @@ qwenpaw plugin install "/path/to/yance-ask-user-question-0.1.6.zip"
 ### 相同 ID 从 0.1.5 升级到 0.1.6
 
 已经安装 `yance-ask-user-question` 0.1.5 时，使用 `--force`
-替换为相同 ID、已验收的本地 0.1.6 ZIP：
+替换为相同 ID、已发布的 0.1.6：
 
 ```bash
-qwenpaw plugin install "/path/to/yance-ask-user-question-0.1.6.zip" --force
+qwenpaw plugin install "https://agentscope-platform-sg-bucket.oss-accelerate.aliyuncs.com/plugin-platform/yance-ask-user-question/0.1.6/yance-ask-user-question-0.1.6.zip" --force
 ```
 
 先完成或拒绝待答，之后刷新 Console；源码启动的桌面版先关闭窗口，

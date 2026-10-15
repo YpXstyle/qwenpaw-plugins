@@ -5,17 +5,17 @@ English | [简体中文](README_zh.md) | [Changelog](CHANGELOG.md)
 Collect structured answers during direct Console conversations, then resume
 the same Agent turn.
 
-**Source version:** 0.1.6 · **Status:** manually accepted by Yance; not marketplace-published · **Author:** Yance · **License:** Apache-2.0
+**Source version:** 0.1.6 · **Status:** manually accepted by Yance; marketplace-published · **Author:** Yance · **License:** Apache-2.0
 
 Plugin ID: `yance-ask-user-question`. Tool and approval source:
 `yance_ask_user_question`. These identifiers are unchanged from 0.1.2;
 the tool is **disabled by default**. This independently maintained plugin
-is [published as 0.1.5 in the AgentScope marketplace](https://platform.agentscope.io/plugins/yance-ask-user-question).
+is [published as 0.1.6 in the AgentScope marketplace](https://platform.agentscope.io/plugins/yance-ask-user-question).
 Maintainer **Yance** accepted 0.1.6: the extra page is gone and questions
 and recommendations work normally. Version 0.1.6 removes the description-sync
 page, menu and dedicated HTTP interface. See the
 [0.1.6 validation and acceptance record](../../../docs/validation/yance-ask-user-question-0.1.6.md).
-Its marketplace materials are prepared, but 0.1.6 is not published. The
+The official marketplace reports 0.1.6 as `published`. The
 [source repository](https://github.com/YpXstyle/qwenpaw-plugins) includes
 the 0.1.5 source tag. No GitHub Release asset has been created.
 
@@ -25,7 +25,9 @@ Its packaged candidate wording reflects packing time. These source READMEs
 and the changelog contain later acceptance updates, so their current bytes
 differ from the ZIP's documentation members. Use the accepted ZIP recorded
 in the validation record; do not overwrite it or repackage this documentation
-revision as the accepted artifact.
+revision as the accepted artifact. The marketplace archive has different
+container bytes, while its eight non-directory files match the accepted ZIP;
+the validation record keeps both hashes.
 
 ## Features
 
@@ -68,16 +70,16 @@ See [Screenshots](#screenshots) for the captured Desktop states.
 
 ## Install and upgrade
 
-The published stable version is still 0.1.5. Install it from the [AgentScope marketplace](https://platform.agentscope.io/plugins/yance-ask-user-question) or use the published
-0.1.5 ZIP URL with QwenPaw running:
+The published stable version is 0.1.6. Install it from the [AgentScope marketplace](https://platform.agentscope.io/plugins/yance-ask-user-question) or use the published
+0.1.6 ZIP URL with QwenPaw running:
 
 ```bash
-qwenpaw plugin install "https://agentscope-platform-sg-bucket.oss-accelerate.aliyuncs.com/plugin-platform/yance-ask-user-question/0.1.5/yance-ask-user-question-0.1.5.zip"
+qwenpaw plugin install "https://agentscope-platform-sg-bucket.oss-accelerate.aliyuncs.com/plugin-platform/yance-ask-user-question/0.1.6/yance-ask-user-question-0.1.6.zip"
 ```
 
 The ZIP includes its built frontend. End users do not need npm, Node.js
-or a source build. To install the accepted local 0.1.6 ZIP, upload that
-exact archive through plugin management or use a real local path, for example:
+or a source build. Alternatively, install the accepted local 0.1.6 ZIP by
+uploading that exact archive through plugin management or using a real local path:
 
 ```bash
 qwenpaw plugin install "/path/to/yance-ask-user-question-0.1.6.zip"
@@ -122,10 +124,10 @@ and its evidence; a new ID/version/hash requires its own acceptance.
 ### Upgrade the same ID from 0.1.5 to 0.1.6
 
 If `yance-ask-user-question` 0.1.5 is installed, use `--force` to replace it
-with the accepted local 0.1.6 ZIP under the same ID:
+with published 0.1.6 under the same ID:
 
 ```bash
-qwenpaw plugin install "/path/to/yance-ask-user-question-0.1.6.zip" --force
+qwenpaw plugin install "https://agentscope-platform-sg-bucket.oss-accelerate.aliyuncs.com/plugin-platform/yance-ask-user-question/0.1.6/yance-ask-user-question-0.1.6.zip" --force
 ```
 
 Finish or decline pending questions first. Afterwards refresh Console;
