@@ -1,0 +1,4 @@
+# No additional Python packages are required or installed by this plugin.
+# Uses the host's pinned AgentScope 2.0.10, FastAPI and Pydantic.
+# Do not install a second framework/runtime. This comments-only file is
+# development documentation and is deliberately omitted from the runtime ZIP.

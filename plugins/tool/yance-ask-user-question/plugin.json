@@ -1,0 +1,43 @@
+{
+  "id": "yance-ask-user-question",
+  "name": "Ask User Question by Yance",
+  "version": "0.1.4",
+  "type": "tool",
+  "description": "在网页和桌面端的直接对话中收集结构化答案，支持单选、多选和自由输入，等待回答后继续当前任务。",
+  "description_i18n": {
+    "en": "Collect structured answers during direct Console conversations, then resume the same agent turn.",
+    "zh": "在网页和桌面端的直接对话中收集结构化答案，支持单选、多选和自由输入，等待回答后继续当前任务。",
+    "ru": "Структурированные вопросы пользователю в прямом диалоге Console Chat с продолжением того же хода после ответа.",
+    "ja": "Console Chat の直接対話で構造化された質問を提示し、ユーザーの回答を待って同じターンを続行します。",
+    "id": "Pertanyaan terstruktur kepada pengguna di percakapan langsung Console Chat, lalu melanjutkan giliran yang sama setelah dijawab.",
+    "pt-BR": "Perguntas estruturadas ao usuário no Console Chat direto, com continuação do mesmo turno após a resposta.",
+    "vi": "Đặt câu hỏi có cấu trúc cho người dùng trong Console Chat trực tiếp và tiếp tục cùng lượt sau khi nhận câu trả lời."
+  },
+  "author": "Yance",
+  "license": "Apache-2.0",
+  "entry": {
+    "backend": "backend/plugin.py",
+    "frontend": "frontend/dist/index.js"
+  },
+  "dependencies": [],
+  "qwenpaw_version": {
+    "min": "2.2.2"
+  },
+  "pack_exclude": [
+    "frontend",
+    "package_plugin.py",
+    "requirements.txt"
+  ],
+  "meta": {
+    "experimental": true,
+    "tool_name": "yance_ask_user_question",
+    "tools": [
+      {
+        "name": "yance_ask_user_question",
+        "description": "在网页和桌面端的直接对话中收集结构化答案，支持单选、多选和自由输入，等待回答后继续当前任务。",
+        "icon": "❓",
+        "requires_config": false
+      }
+    ]
+  }
+}
