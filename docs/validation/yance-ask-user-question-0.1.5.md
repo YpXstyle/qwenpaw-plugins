@@ -41,8 +41,10 @@ The local run `20261015T083110Z-5a0eabea` passed:
 
 Before uploading the accepted source snapshot, all **50 source fingerprints**
 still matched that run. All eight ZIP members matched its packaged sources.
-Later README/gallery changes on `main` are documentation revisions, checked
-separately for formatting, links and CI. They do not rebuild the accepted ZIP
+Later README/gallery and documentation-packaging changes on `main` are
+checked separately for formatting, links, packaging compatibility and CI.
+The manifest excludes source documentation assets through `pack_exclude`.
+These changes do not rebuild the accepted ZIP
 or move its source tag. Historical preflight uses that frozen source snapshot,
 not a later documentation revision.
 

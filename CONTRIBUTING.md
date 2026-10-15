@@ -32,6 +32,9 @@ its README and document that viewing them requires network access. Source
 documentation may evolve after a release; never rewrite accepted ZIPs or
 tags merely to update pictures. Shared root guides may link to the plugin
 without duplicating its full gallery.
+When documentation assets are omitted from the runtime ZIP, declare the
+directory in `pack_exclude` so the official and local packagers retain
+the same runtime file set.
 
 ## Plugin documentation and metadata
 

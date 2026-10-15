@@ -23,11 +23,7 @@
   "qwenpaw_version": {
     "min": "2.2.2"
   },
-  "pack_exclude": [
-    "frontend",
-    "package_plugin.py",
-    "requirements.txt"
-  ],
+  "pack_exclude": ["frontend", "docs", "package_plugin.py", "requirements.txt"],
   "meta": {
     "experimental": true,
     "tool_name": "yance_ask_user_question",
