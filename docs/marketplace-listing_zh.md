@@ -4,6 +4,15 @@
 
 ## 当前状态
 
+维护者 **Yance** 已人工验收源码版本 **0.1.6**，确认额外页面消失、问答和推荐正常。
+市场材料已准备，0.1.6 尚未发布，见
+[0.1.6 验证与验收记录](validation/yance-ask-user-question-0.1.6.md)。
+下列已发布市场版本仍为 **0.1.5**。
+
+后续提交应使用绑定冻结源码提交
+[`e1635aa`](https://github.com/YpXstyle/qwenpaw-plugins/commit/e1635aab12c028da2d8f0d1cc90a2f9557d0ef5d)的已验收 0.1.6 ZIP。
+包内候选字样属于打包时点文字，之后源码 README/变更记录的验收状态更新不改写该 ZIP。
+
 [Ask User Question by Yance 0.1.5 已在 AgentScope 插件市场发布](https://platform.agentscope.io/plugins/yance-ask-user-question)。
 公开条目显示版本 `0.1.5`、作者 **Yance**，并关联正确的[源码仓库](https://github.com/YpXstyle/qwenpaw-plugins)。
 源码及 [0.1.5 tag](https://github.com/YpXstyle/qwenpaw-plugins/tree/yance-ask-user-question-v0.1.5)已上传，
@@ -21,22 +30,23 @@
 
 ## 待准备字段
 
-以下按 2026-10-15 核实的 QwenPaw 官方发布页整理。
+以下整理 QwenPaw 对应字段。2026-10-15 核查的发布表单确认 ZIP 上限为 10 MiB；
+其他限制以提交时的表单和服务器校验为准。
 
-| 字段            | 值或操作                                                                                                                                                                                                |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 插件包          | 单插件 ZIP 不超过 10 MiB；已有[市场公开 0.1.5 ZIP](https://agentscope-platform-sg-bucket.oss-accelerate.aliyuncs.com/plugin-platform/yance-ask-user-question/0.1.5/yance-ask-user-question-0.1.5.zip)。 |
-| 名称            | Ask User Question by Yance                                                                                                                                                                              |
-| 插件 ID / 版本  | `yance-ask-user-question` / `0.1.5`，以最终包解析值复核                                                                                                                                                 |
-| 类型            | 清单为 `tool`，核对/选择平台提供的对应插件类型                                                                                                                                                          |
-| 作者            | Yance；联系邮箱 `xstyle@qq.com` 写在 README，不发明清单邮箱字段                                                                                                                                         |
-| 后端 / 前端入口 | `backend/plugin.py` / `frontend/dist/index.js`                                                                                                                                                          |
-| 依赖            | 不新增依赖，使用宿主提供的 AgentScope `2.0.10`                                                                                                                                                          |
-| 适配版本        | 声明最低 `2.2.2`；证据目标为 `2.2.2 / 5c56644a6e130762a236f8c946103e95a0a1eec8`，不是所有准入版本均已验证                                                                                               |
-| 插件说明        | 可采用下方草稿，不超过平台 2000 字限制                                                                                                                                                                  |
-| 源码仓库        | `https://github.com/YpXstyle/qwenpaw-plugins`；版本源码纳入本仓库，与市场发布相互独立                                                                                                                   |
-| 变更说明        | 显式英文/中文标记兼容，以及带标记项稳定置前展示；原标签、schema 及选择不变                                                                                                                              |
-| 权利 / 许可证   | 获准继续时确认拥有发布权利并同意 Apache-2.0                                                                                                                                                             |
+| 字段            | 值或操作                                                                                                                                                                                                                                                                                                 |
+| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 插件包          | 单插件 ZIP 不超过 10 MiB。准备[验证记录](validation/yance-ask-user-question-0.1.6.md)中的精确已验收 0.1.6 ZIP；[市场公开 0.1.5 ZIP](https://agentscope-platform-sg-bucket.oss-accelerate.aliyuncs.com/plugin-platform/yance-ask-user-question/0.1.5/yance-ask-user-question-0.1.5.zip)仍是当前公开下载。 |
+| 名称            | Ask User Question by Yance                                                                                                                                                                                                                                                                               |
+| 插件 ID / 版本  | `yance-ask-user-question` / `0.1.6`，以最终包解析值复核                                                                                                                                                                                                                                                  |
+| 类型            | 清单为 `tool`，核对/选择平台提供的对应插件类型                                                                                                                                                                                                                                                           |
+| 作者            | Yance；联系邮箱 `xstyle@qq.com` 写在 README，不发明清单邮箱字段                                                                                                                                                                                                                                          |
+| 后端 / 前端入口 | `backend/plugin.py` / `frontend/dist/index.js`                                                                                                                                                                                                                                                           |
+| 依赖            | 不新增依赖，使用宿主提供的 AgentScope `2.0.10`                                                                                                                                                                                                                                                           |
+| 适配版本        | 声明最低 `2.2.2`；证据目标为 `2.2.2 / 5c56644a6e130762a236f8c946103e95a0a1eec8`，不是所有准入版本均已验证                                                                                                                                                                                                |
+| 插件说明        | 可采用下方草稿，提交前按当前表单及服务器校验复核                                                                                                                                                                                                                                                         |
+| 源码仓库        | `https://github.com/YpXstyle/qwenpaw-plugins`；版本源码纳入本仓库，与市场发布相互独立                                                                                                                                                                                                                    |
+| 变更说明        | 采用下方 0.1.6 变更说明：移除额外设置页、菜单和接口，保留问答与推荐契约                                                                                                                                                                                                                                  |
+| 权利 / 许可证   | 获准继续时确认拥有发布权利并同意 Apache-2.0                                                                                                                                                                                                                                                              |
 
 名称、版本、作者、入口、依赖和适配版本由包解析。
 当前表单要求先解析包、选择插件类型并确认权利协议，才可继续。
@@ -49,15 +59,21 @@
 
 Ask User Question by Yance 在直接交互的 Console 或桌面 Chat 中收集结构化答案，然后继续同一 Agent 轮次。每次 1–4 问，每题 2–4 个带说明的选项，支持单选、多选和客户端提供的“其他/自由输入”。逐题作答，全部完成后统一提交。
 
-0.1.5 显示层兼容成对半角/全角括号中的显式英文 Recommended 或中文“推荐”后缀。所有带标记选项均显示推荐样式，并稳定置前，两组内部保持原相对顺序。不自动预选，不修改原选项标签、框架 schema 或回传答案；框架原始英文标记指令保持不变。
+显示层兼容成对半角/全角括号中的显式英文 Recommended 或中文“推荐”后缀。所有带标记选项均显示推荐样式，并稳定置前，两组内部保持原相对顺序。不自动预选，不修改原选项标签、框架 schema 或回传答案；框架原始英文标记指令保持不变。
 
-插件界面支持七语，原生列表默认介绍为中文；设置页可显式同步当前 Agent 的工具介绍，保留开关和配置。目标宿主为 QwenPaw 2.2.2 / 5c56644a，框架为 AgentScope 2.0.10，工具默认禁用。不支持 IM、子 Agent、跨配置/远程委托、ACP/TUI、无人值守任务、Inbox 或重启恢复。每个候选均须有自身验证及维护者验收证据。
+问答卡和详情支持七语界面，原生列表使用默认中文介绍，不自动随语言切换。0.1.6 无需额外插件配置或独立设置页，在宿主 Agent 工具页启用即可。已有介绍、工具开关及保存的配置保持原样，不自动改写。目标宿主为 QwenPaw 2.2.2 / 5c56644a，框架为 AgentScope 2.0.10，工具默认禁用。不支持 IM、子 Agent、跨配置/远程委托、ACP/TUI、无人值守任务、Inbox 或重启恢复。
 
 <!-- listing-description:end -->
 
+## 0.1.6 变更说明草稿
+
+移除独立介绍同步页面、菜单和专属 HTTP 接口。插件无需额外配置，
+工具仍在宿主 Agent 工具页启用。保留已有英文/自定义介绍、工具开关及其他已保存配置。
+问答渲染、推荐显示、框架 schema 和答案 metadata 保持不变。
+
 ## 可选效果素材
 
-六张维护者桌面原图及简洁的证明边界直接放在插件的[英文 README](../plugins/tool/yance-ask-user-question/README.md#screenshots)
+六张 0.1.5 维护者桌面原图及简洁的证明边界直接放在插件的[英文 README](../plugins/tool/yance-ask-user-question/README.md#screenshots)
 和[中文 README](../plugins/tool/yance-ask-user-question/README_zh.md#screenshots)。
 文件归属 `plugins/tool/yance-ask-user-question/docs/images/0.1.5/`，未裁剪或改图。
 橙色本身表示选中，不表示推荐。图片属于源码文档，不加入八文件运行包白名单，也不改已验收归档。

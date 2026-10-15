@@ -4,14 +4,22 @@
 
 在直接交互的 Console 对话中收集结构化答案，然后在同一 Agent 轮次继续执行。
 
-**源码版本：**0.1.6 · **状态：**本地候选，待人工验收 · **作者：**Yance · **许可证：**Apache-2.0
+**源码版本：**0.1.6 · **状态：**Yance 已人工验收，尚未市场发布 · **作者：**Yance · **许可证：**Apache-2.0
 
 插件 ID：`yance-ask-user-question`；工具名与审批来源：`yance_ask_user_question`。
 这些标识与 0.1.2 保持一致，工具**默认禁用**。
 本插件由个人独立维护，[AgentScope 插件市场已发布 0.1.5](https://platform.agentscope.io/plugins/yance-ask-user-question)。
-维护者 **Yance** 重启后已确认 0.1.5 桌面验收。0.1.6 移除介绍同步页面、菜单和专属 HTTP 接口，
-尚未发布或完成人工验收。[源码仓库](https://github.com/YpXstyle/qwenpaw-plugins)
+维护者 **Yance** 已验收 0.1.6，确认额外页面消失、问答和推荐功能正常。
+0.1.6 移除介绍同步页面、菜单和专属 HTTP 接口，见
+[0.1.6 验证与验收记录](../../../docs/validation/yance-ask-user-question-0.1.6.md)。
+市场材料已准备，0.1.6 尚未发布。[源码仓库](https://github.com/YpXstyle/qwenpaw-plugins)
 包含 0.1.5 源码 tag。目前未创建 GitHub Release 资产。
+
+已验收的 0.1.6 ZIP 绑定冻结源码提交
+[`e1635aa`](https://github.com/YpXstyle/qwenpaw-plugins/commit/e1635aab12c028da2d8f0d1cc90a2f9557d0ef5d)。
+包内候选字样属于打包时点文字。当前源码 README 和变更记录补充了之后的验收状态，
+因此其字节与 ZIP 内文档成员不同。发行应使用验证记录中的已验收 ZIP，
+不要覆盖它，也不要把本次文档修订重新打包后当作同一已验收产物。
 
 ## 功能
 
@@ -32,7 +40,7 @@
 按实际锚点和 `visualViewport` 测量可用空间，用于处理非全屏、较矮桌面窗口中的标题/操作遮挡，
 布局变化时保留草稿。框架模型指令仍要求英文 `(Recommended)` 和推荐项首位，保持原样。
 中文标记只是显示容错，不改变 schema；不解析其他语言标记，七语支持指插件徽标和界面。
-每个候选须有绑定自身源码/ZIP 的证据；已验收的 0.1.5 及更早 ZIP 均保持原字节。
+每个候选须有绑定自身源码/ZIP 的证据；已验收的 0.1.5、0.1.6 及更早 ZIP 均保持原字节。
 所示桌面状态见[效果截图](#screenshots)。
 
 ## 安装与升级
@@ -45,7 +53,7 @@ qwenpaw plugin install "https://agentscope-platform-sg-bucket.oss-accelerate.ali
 ```
 
 ZIP 已含前端构建产物，使用者无需 npm、Node.js 或源码构建。
-测试本地 0.1.6 候选时，可通过插件管理上传已验证 ZIP，或使用真实本地路径，例如：
+安装已验收的本地 0.1.6 ZIP 时，可通过插件管理上传该精确归档，或使用真实本地路径，例如：
 
 ```bash
 qwenpaw plugin install "/path/to/yance-ask-user-question-0.1.6.zip"
@@ -79,10 +87,10 @@ qwenpaw plugin install "/path/to/yance-ask-user-question-0.1.6.zip"
 待答、草稿和旧工具配置均不自动迁移。不要修改官方 `ask_user_question` 工具。
 保留原 0.1.1 ZIP 和证据，新 ID/版本/哈希需要自己的验收。
 
-### 相同 ID 从 0.1.5 升级到 0.1.6 候选
+### 相同 ID 从 0.1.5 升级到 0.1.6
 
 已经安装 `yance-ask-user-question` 0.1.5 时，使用 `--force`
-替换为相同 ID、已完成自动验证的本地 0.1.6 候选：
+替换为相同 ID、已验收的本地 0.1.6 ZIP：
 
 ```bash
 qwenpaw plugin install "/path/to/yance-ask-user-question-0.1.6.zip" --force
@@ -250,8 +258,10 @@ Chat 的 `yance_ask_user_question_ui: "1"` 是界面就绪提示，
 ## 支持范围与兼容性
 
 支持范围为**直接交互的 Console Chat 主 Agent**。
-桌面 Chat 使用相同扩展接口。维护者 **Yance** 重启后已在目标桌面版本验收 0.1.5，
-见[验证记录](https://github.com/YpXstyle/qwenpaw-plugins/blob/main/docs/validation/yance-ask-user-question-0.1.5.md)。新候选仍须独立人工验收，旧版或浏览器结果不能代替。
+桌面 Chat 使用相同扩展接口。维护者 **Yance** 已验收 0.1.6，确认额外页面消失、问答和推荐正常，
+见[0.1.6 记录](../../../docs/validation/yance-ask-user-question-0.1.6.md)。
+[0.1.5 桌面记录](https://github.com/YpXstyle/qwenpaw-plugins/blob/main/docs/validation/yance-ask-user-question-0.1.5.md)单独保留。
+每个新候选仍须独立人工验收，旧版或浏览器结果不能代替。
 
 不支持 IM、子 Agent、跨配置委托、远程 Agent、ACP、TUI、cron、heartbeat、
 mail monitor、其他无界面/无人值守入口、Inbox 和重启持久恢复。
@@ -268,7 +278,7 @@ mail monitor、其他无界面/无人值守入口、Inbox 和重启持久恢复�
 | 清单与实际版本检查     | 声明 `min: 2.2.2`；规范推导上界 `<2.3.0`，但当前开发基线暂时只强制检查最低版本，不强制上界         |
 | 框架依赖               | 宿主提供的 AgentScope `2.0.10`，不额外安装另一份框架                                               |
 | 其他宿主版本           | 尚未逐版验证，加载范围不是全范围兼容保证                                                           |
-| Web 与桌面人工验收     | 0.1.5 已由 Yance 完成桌面验收；Web/桌面及精确产物分别记录                                          |
+| Web 与桌面人工验收     | 0.1.6 已由 Yance 验收，0.1.5 桌面证据单独保留；按版本分别记录平台、范围和精确产物                  |
 
 开发基线为未经修改的上游 QwenPaw `5c56644a`（`2.2.2`），
 使用宿主钉住的 AgentScope `2.0.10`。清单最低版本 `2.2.2` 是准入条件，
@@ -327,7 +337,8 @@ python scripts/package_plugin.py --plugin yance-ask-user-question --output-dir d
 
 自动化结果仅覆盖其记录的源码和产物哈希，不证明上游全量 CI、云模型行为、桌面验收或市场批准。
 每个候选均须完成自身验证和人工验收，旧版本结果单独保留。
-所链接验证记录对应已验收的 0.1.5 产物；当前源码文档可继续更新，不改写已冻结 ZIP。
+[0.1.6 记录](../../../docs/validation/yance-ask-user-question-0.1.6.md)将已验收 ZIP 绑定到冻结源码快照。
+当前源码文档补充之后的验收状态，不改写该 ZIP。
 源码仓库的[市场发布材料](../../../docs/marketplace-listing_zh.md)记录实际 QwenPaw 字段及发布状态，
 源码上传不等于市场审核通过。
 

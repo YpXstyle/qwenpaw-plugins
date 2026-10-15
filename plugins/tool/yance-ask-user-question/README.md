@@ -5,17 +5,27 @@ English | [简体中文](README_zh.md) | [Changelog](CHANGELOG.md)
 Collect structured answers during direct Console conversations, then resume
 the same Agent turn.
 
-**Source version:** 0.1.6 · **Status:** local candidate awaiting manual acceptance · **Author:** Yance · **License:** Apache-2.0
+**Source version:** 0.1.6 · **Status:** manually accepted by Yance; not marketplace-published · **Author:** Yance · **License:** Apache-2.0
 
 Plugin ID: `yance-ask-user-question`. Tool and approval source:
 `yance_ask_user_question`. These identifiers are unchanged from 0.1.2;
 the tool is **disabled by default**. This independently maintained plugin
 is [published as 0.1.5 in the AgentScope marketplace](https://platform.agentscope.io/plugins/yance-ask-user-question).
-Maintainer **Yance** confirmed 0.1.5 Desktop acceptance after restarting.
-Version 0.1.6 removes the description-sync page, menu and dedicated HTTP
-interface; it is a local candidate, not published or manually accepted. The
+Maintainer **Yance** accepted 0.1.6: the extra page is gone and questions
+and recommendations work normally. Version 0.1.6 removes the description-sync
+page, menu and dedicated HTTP interface. See the
+[0.1.6 validation and acceptance record](../../../docs/validation/yance-ask-user-question-0.1.6.md).
+Its marketplace materials are prepared, but 0.1.6 is not published. The
 [source repository](https://github.com/YpXstyle/qwenpaw-plugins) includes
 the 0.1.5 source tag. No GitHub Release asset has been created.
+
+The accepted 0.1.6 ZIP is frozen against source commit
+[`e1635aa`](https://github.com/YpXstyle/qwenpaw-plugins/commit/e1635aab12c028da2d8f0d1cc90a2f9557d0ef5d).
+Its packaged candidate wording reflects packing time. These source READMEs
+and the changelog contain later acceptance updates, so their current bytes
+differ from the ZIP's documentation members. Use the accepted ZIP recorded
+in the validation record; do not overwrite it or repackage this documentation
+revision as the accepted artifact.
 
 ## Features
 
@@ -52,8 +62,8 @@ The framework's model instruction still requests English `(Recommended)`
 and first position; it is unchanged. Chinese markers are display
 compatibility, not a schema change. Other marker languages are not parsed;
 seven-language support refers to the plugin's badges and interface.
-Each candidate requires evidence bound to its own source/ZIP. The accepted
-0.1.5 artifact and earlier accepted ZIPs remain byte-for-byte unchanged.
+Each candidate requires evidence bound to its own source/ZIP. Accepted
+0.1.5 and 0.1.6 artifacts and earlier accepted ZIPs remain byte-for-byte unchanged.
 See [Screenshots](#screenshots) for the captured Desktop states.
 
 ## Install and upgrade
@@ -66,8 +76,8 @@ qwenpaw plugin install "https://agentscope-platform-sg-bucket.oss-accelerate.ali
 ```
 
 The ZIP includes its built frontend. End users do not need npm, Node.js
-or a source build. To test the local 0.1.6 candidate, upload its validated
-ZIP through plugin management or use a real local path, for example:
+or a source build. To install the accepted local 0.1.6 ZIP, upload that
+exact archive through plugin management or use a real local path, for example:
 
 ```bash
 qwenpaw plugin install "/path/to/yance-ask-user-question-0.1.6.zip"
@@ -109,10 +119,10 @@ form drafts and old tool configuration are not migrated. Leave the
 official `ask_user_question` tool untouched. Keep the original 0.1.1 ZIP
 and its evidence; a new ID/version/hash requires its own acceptance.
 
-### Upgrade the same ID from 0.1.5 to the 0.1.6 candidate
+### Upgrade the same ID from 0.1.5 to 0.1.6
 
 If `yance-ask-user-question` 0.1.5 is installed, use `--force` to replace it
-with the validated local 0.1.6 candidate under the same ID:
+with the accepted local 0.1.6 ZIP under the same ID:
 
 ```bash
 qwenpaw plugin install "/path/to/yance-ask-user-question-0.1.6.zip" --force
@@ -327,10 +337,12 @@ is not promised.
 
 Supported scope is **direct interactive Console Chat with its main Agent**.
 Desktop Chat shares the extension interfaces. Maintainer **Yance** accepted
-0.1.5 on the target Desktop build after restarting; see the
-[validation record](https://github.com/YpXstyle/qwenpaw-plugins/blob/main/docs/validation/yance-ask-user-question-0.1.5.md). Each new candidate requires its own
-manual acceptance. Earlier browser/version results do not establish that
-acceptance.
+0.1.6, confirming removal of the extra page and normal questions and
+recommendations; see the
+[0.1.6 record](../../../docs/validation/yance-ask-user-question-0.1.6.md).
+The [0.1.5 Desktop record](https://github.com/YpXstyle/qwenpaw-plugins/blob/main/docs/validation/yance-ask-user-question-0.1.5.md)
+stays separate. Each new candidate requires its own manual acceptance;
+earlier browser/version results do not establish that acceptance.
 
 IM, subagents, cross-configuration delegation, remote agents, ACP, TUI,
 cron, heartbeat, mail monitoring, other headless/unattended entry points,
@@ -351,7 +363,7 @@ answers returns `ERROR`.
 | Manifest and actual version checks    | Declared `min: 2.2.2`; the documented derived upper bound is `<2.3.0`, but this baseline temporarily enforces only the minimum, not the upper bound |
 | Framework dependency                  | Host-provided AgentScope `2.0.10`; no second framework installation                                                                                 |
 | Other host versions                   | Not individually verified; admission does not prove compatibility across the range                                                                  |
-| Web and Desktop manual acceptance     | 0.1.5 Desktop accepted by Yance; record Web/Desktop and exact artifacts separately                                                                  |
+| Web and Desktop manual acceptance     | 0.1.6 accepted by Yance; 0.1.5 Desktop evidence stays separate. Record platforms, scope and exact artifacts per version                             |
 
 The development baseline is unmodified upstream QwenPaw `5c56644a`
 (`2.2.2`) with its pinned AgentScope `2.0.10`. Manifest minimum `2.2.2`
@@ -423,9 +435,10 @@ node_modules, user state or second AgentScope runtime is shipped.
 Automated results cover only their recorded source/archive hashes. They
 do not establish full upstream CI, cloud-model behavior, desktop acceptance
 or marketplace approval. Each candidate requires its own validation and
-manual acceptance; previous-version results stay separate. The linked
-validation record documents the accepted 0.1.5 artifact; current source
-documentation may evolve without rewriting that frozen ZIP.
+manual acceptance; previous-version results stay separate. The
+[0.1.6 record](../../../docs/validation/yance-ask-user-question-0.1.6.md)
+binds its accepted ZIP to the frozen source snapshot. Current source
+documentation includes later acceptance updates without rewriting that ZIP.
 The [marketplace listing materials](../../../docs/marketplace-listing.md) in
 the source repository records the actual QwenPaw fields and publication
 status; source upload is separate from marketplace approval.

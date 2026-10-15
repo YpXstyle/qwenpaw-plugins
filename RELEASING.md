@@ -12,8 +12,10 @@ not automatically publish them.
 Update its `plugin.json` version, frontend package version when present,
 English/Chinese READMEs and changelog together. Preserve its installation
 ID and compatible internal registrations. For the current plugin the
-candidate is `yance-ask-user-question` **0.1.6**, awaiting manual acceptance
-and not published. Keep accepted 0.1.5 packages and acceptance evidence unchanged. The sole current host
+version is `yance-ask-user-question` **0.1.6**, manually accepted by Yance
+with marketplace materials prepared, but not marketplace-published. See its
+[validation and acceptance record](docs/validation/yance-ask-user-question-0.1.6.md).
+Keep accepted 0.1.5 packages and acceptance evidence unchanged. The sole current host
 target is stable QwenPaw `2.2.2`, commit
 `5c56644a6e130762a236f8c946103e95a0a1eec8`, with AgentScope `2.0.10`.
 Upgrading the namespaced 0.1.5 installation retains its ID and uses
@@ -26,7 +28,7 @@ source is maintained in this repository. See the [validation record](docs/valida
 and [plugin screenshots](plugins/tool/yance-ask-user-question/README.md#screenshots).
 Earlier-version results do not transfer to a new artifact.
 
-The 0.1.6 candidate removes the standalone description-sync page, menu
+Version 0.1.6 removes the standalone description-sync page, menu
 and dedicated HTTP interface. No extra plugin configuration remains;
 the host's Agent tools page controls enablement. Preserve existing
 English/custom descriptions, switches and other saved configuration.
@@ -90,8 +92,8 @@ resumes the waiting question. Refresh/reopen Web and Desktop pages to
 avoid testing an old loaded bundle.
 
 Record exact packages and outcomes in ignored reports, not unfinished pass
-counts in source documentation. Manual acceptance is required before commit
-or publication of this candidate.
+counts in source documentation. Each candidate requires manual acceptance
+before commit or publication; 0.1.6 acceptance is recorded separately above.
 
 The accepted 0.1.5 runtime ZIP and tag are kept byte-for-byte unchanged.
 Its packaged README still uses candidate wording from packing time; the
@@ -104,6 +106,16 @@ separate directory with `--output-dir` so the frozen ZIP is not overwritten.
 Retain the original automation reports and record human acceptance
 separately. The example template remains `pending` and is not a completed
 maintainer acceptance record.
+
+For 0.1.6, keep the accepted ZIP and original reports bound to frozen source
+commit [`e1635aa`](https://github.com/YpXstyle/qwenpaw-plugins/commit/e1635aab12c028da2d8f0d1cc90a2f9557d0ef5d).
+Its packaged candidate wording reflects packing time. Later documentation-only
+revisions update source READMEs and the changelog, which are ZIP members;
+that newer checkout is not byte-identical to the accepted package source.
+Historical preflight must use the frozen source commit, recorded ZIP and
+matching evidence. Publish the accepted ZIP from the
+[0.1.6 record](docs/validation/yance-ask-user-question-0.1.6.md), without
+repacking the later documentation revision or overwriting the archive.
 
 Copy [the acceptance example](docs/manual-acceptance.example.json) into
 your local evidence directory and fill these fields truthfully:

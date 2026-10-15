@@ -8,9 +8,9 @@
 
 ## 插件目录
 
-| 插件                                                                            | 稳定 ID                   | 源码版本 | 用途                               | 效果截图                                                                  | 插件市场                                                                       |
-| ------------------------------------------------------------------------------- | ------------------------- | -------- | ---------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
-| [Ask User Question by Yance](plugins/tool/yance-ask-user-question/README_zh.md) | `yance-ask-user-question` | `0.1.6`  | 直接交互的 Console Chat 结构化提问 | [查看示例](plugins/tool/yance-ask-user-question/README_zh.md#screenshots) | [已发布 0.1.5](https://platform.agentscope.io/plugins/yance-ask-user-question) |
+| 插件                                                                            | 稳定 ID                   | 源码版本                                                           | 用途                               | 效果截图                                                                  | 插件市场                                                                       |
+| ------------------------------------------------------------------------------- | ------------------------- | ------------------------------------------------------------------ | ---------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| [Ask User Question by Yance](plugins/tool/yance-ask-user-question/README_zh.md) | `yance-ask-user-question` | [0.1.6 · 已验收](docs/validation/yance-ask-user-question-0.1.6.md) | 直接交互的 Console Chat 结构化提问 | [查看示例](plugins/tool/yance-ask-user-question/README_zh.md#screenshots) | [已发布 0.1.5](https://platform.agentscope.io/plugins/yance-ask-user-question) |
 
 版本列指仓库源码版本，市场版本与安装入口按插件分别列出。
 当前插件尚无 GitHub Release 下载资产。各插件 README 提供功能、安装、配置、

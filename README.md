@@ -8,9 +8,9 @@ package. Source: [YpXstyle/qwenpaw-plugins](https://github.com/YpXstyle/qwenpaw-
 
 ## Plugin catalog
 
-| Plugin                                                                       | Stable ID                 | Source version | Purpose                                                 | Screenshots                                                                 | Marketplace                                                                       |
-| ---------------------------------------------------------------------------- | ------------------------- | -------------- | ------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| [Ask User Question by Yance](plugins/tool/yance-ask-user-question/README.md) | `yance-ask-user-question` | `0.1.6`        | Structured questions in direct interactive Console Chat | [View examples](plugins/tool/yance-ask-user-question/README.md#screenshots) | [Published 0.1.5](https://platform.agentscope.io/plugins/yance-ask-user-question) |
+| Plugin                                                                       | Stable ID                 | Source version                                                       | Purpose                                                 | Screenshots                                                                 | Marketplace                                                                       |
+| ---------------------------------------------------------------------------- | ------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| [Ask User Question by Yance](plugins/tool/yance-ask-user-question/README.md) | `yance-ask-user-question` | [0.1.6 · accepted](docs/validation/yance-ask-user-question-0.1.6.md) | Structured questions in direct interactive Console Chat | [View examples](plugins/tool/yance-ask-user-question/README.md#screenshots) | [Published 0.1.5](https://platform.agentscope.io/plugins/yance-ask-user-question) |
 
 The version column refers to repository source. Marketplace versions and
 installation links are listed per plugin. No GitHub Release asset has
